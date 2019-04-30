@@ -37,5 +37,10 @@ public class GuardaropaTest {
 		
 		assertNotNull(guardaropa);
 	}
-
+	/*TO-DO terminar metodos de filtrada por guarda ropa
+	@Test
+	public void test_alMenosUnAtuendo(){
+	assertEquals(true, guardaropa.getPrendasDeseadas(Zapatillas.class).stream.findAny());
+	}
+	*/
 }
