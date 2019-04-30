@@ -12,7 +12,7 @@ public class Guardaropa {
 		
 	}
 	
-	public Integer cantidadDePrendas() {
+	public int cantidadDePrendas() {
 		return prendas.size();
 	}
 

@@ -1,5 +1,7 @@
 package loco;
 
+import static org.junit.Assert.assertFalse;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,5 +18,6 @@ public class ElQueSiempreDiceTrueTest {
 	public void test() {
 		assert(elVerdadero.deciTrue());
 	}
+
 
 }
