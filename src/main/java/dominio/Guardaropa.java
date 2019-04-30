@@ -15,5 +15,15 @@ public class Guardaropa {
 	public int cantidadDePrendas() {
 		return prendas.size();
 	}
-
+	/*
+	public ArrayList<Prenda> getPrendas(Prenda tipoPrenda) {
+		
+		ArrayList<Prenda> prendasDeseadas = null ;
+		
+		for(Prenda prenda : prendas) {
+		 if( tipoPrenda.isInstance(prenda) ) {
+			 prendasDeseadas.add(prenda);
+		 }
+		}
+	*/
 }
