@@ -1,1 +1,3 @@
 Version 0.00.01
+Version 0.01.00
+	Fin entrega 0, se eliminan clases y archivos de prueba.
