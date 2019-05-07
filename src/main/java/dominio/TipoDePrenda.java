@@ -1,7 +1,22 @@
 package dominio;
 
-public enum TipoDePrenda {
+public class TipoDePrenda {
 	
-	REMERA, CAMISA_MANGA_CORTA, MUSCULOSA, BLUSA, PANTALON, SHORT, POLLERA, ZAPATILLAS, OJOTAS, SANDALIAS
+	private String tipoPrenda;
+	private Categoria categoria;
+	
+	public TipoDePrenda(String tipoPrenda, Categoria categoria) {
+		this.tipoPrenda = tipoPrenda;
+		this.categoria = categoria;
+	}
+
+	public Categoria getCategoria() {
+		return this.categoria;
+	}
+	
+	
+	
+	
+	
 
 }

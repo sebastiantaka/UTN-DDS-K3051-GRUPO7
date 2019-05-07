@@ -12,8 +12,14 @@ public class Prenda {
 		this.color = unColor;
 	}
 	
+	public Categoria categoria() {
+		return tipoDePrenda.getCategoria();
+	}
+	
 	
 	
 	
 
 }
+
+
