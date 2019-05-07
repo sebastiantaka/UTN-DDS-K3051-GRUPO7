@@ -1,0 +1,7 @@
+package dominio;
+
+public enum TipoDePrenda {
+	
+	REMERA, CAMISA_MANGA_CORTA, MUSCULOSA, BLUSA, PANTALON, SHORT, POLLERA, ZAPATILLAS, OJOTAS, SANDALIAS
+
+}

@@ -2,10 +2,14 @@ package dominio;
 
 public class Prenda {
 	
-	private TipoPrenda prenda;
+	private TipoDePrenda tipoDePrenda;
+	private Material material;
+	private Color color;
 
-	public Prenda(TipoPrenda prenda) {
-		this.prenda = prenda;
+	public Prenda(TipoDePrenda unTipoDePrenda, Material unMaterial, Color unColor) {
+		this.tipoDePrenda = unTipoDePrenda;
+		this.material = unMaterial;
+		this.color = unColor;
 	}
 	
 	
