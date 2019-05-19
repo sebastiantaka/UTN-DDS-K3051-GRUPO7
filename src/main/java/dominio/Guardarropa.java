@@ -2,7 +2,7 @@ package dominio;
 
 import java.util.ArrayList;
 
-public class Guardaropa {
+public class Guardarropa {
 	
 	private ArrayList<Prenda> prendas = new ArrayList<Prenda>();
 	
