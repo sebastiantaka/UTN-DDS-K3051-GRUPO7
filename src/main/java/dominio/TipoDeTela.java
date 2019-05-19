@@ -1,6 +1,6 @@
 package dominio;
 
-public enum Material {
+public enum TipoDeTela {
 
 	ALGODON, JEAN, NYLON, CUERO, LANA
 }
