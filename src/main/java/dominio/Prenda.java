@@ -26,7 +26,7 @@ public class Prenda {
 	
 	/*Categoria*/
 	
-	public Categoria categoria() {
+	public Categoria getCategoria() {
 		return tipoDePrenda.getCategoria();
 	}
 	
@@ -57,6 +57,7 @@ public class Prenda {
 	public TipoDeTela getTipoDeTela() {
 		return tipoDeTela;
 	}
+
 
 	
 	
