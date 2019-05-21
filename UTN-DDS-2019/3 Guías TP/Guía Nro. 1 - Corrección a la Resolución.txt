@@ -1,0 +1,20 @@
+GRUPO 7
+Ej 1)
+- Falta entidad "Histórico de transacciones" donde se chequea si hay saldo
+Ej 2A)
+- No están modelados los tipos de datos (informacion) que pueden agregar los ciudadanos
+- Faltan estados de las busqquedas
+Ej 2B)
+- Alinear las declaraciones de Entidades en el encabezado del diagrama
+- Las flechas actúan sobre las instancias (bloques verticales), no las definiciones de Entidades (Ej: al crear unReporte)
+- Respuestas
+Ej 2C)
+- No es necesario que sean todos componentes individuales
+Ej 2D)
+- Es algo compleja la solución propuesta respecto de la distribución en diferentes entornos para los gestores. Podrían detallar la solución mediante una descripción (prosa).
+Ej 3A)
+- Clase Pista tiene atributos y metodos que no son del dominio
+- No esta modelado Artista/Album/etc
+- UsuarioRedSocial tal vez sería mejor que esté relacionado con PerfilUsuario y no con el reproductor
+Ej 3B)
+- ok
