@@ -1,4 +1,6 @@
-package testDominio;
+/*
+ package testDominio;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,3 +25,5 @@ public class RemeraTest {
 	}
 
 }
+
+ */
