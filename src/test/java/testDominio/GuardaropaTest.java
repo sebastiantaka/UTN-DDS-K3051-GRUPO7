@@ -35,6 +35,7 @@ public class GuardaropaTest {
 	private Prenda prenda4;
 	private Prenda prenda5;
 	private Prenda prenda6;
+	private Prenda prenda7;
 	
 	@Before
 	public void init() {
@@ -46,6 +47,7 @@ public class GuardaropaTest {
 		
 		tiposDeZapatilla = new HashSet<TipoDeTela>();
 		tiposDeZapatilla.add(TipoDeTela.CUERO);
+		tiposDeZapatilla.add(TipoDeTela.GAMUZA);
 		
 		tiposDeAnteojos = new HashSet<TipoDeTela>();
 		tiposDeAnteojos.add(TipoDeTela.VIDRIO);
@@ -78,6 +80,15 @@ public class GuardaropaTest {
 		
 		assertEquals(6, guardarropa.cantidadDePrendas());
 	}
+	
+	@Test
+	public void test_guardaropaAgregaPrendas() {
+		
+		prenda7 = new Prenda(zapatilla, TipoDeTela.GAMUZA, Color.NEGRO);
+		guardarropa.agregarPrendas(prenda7);
+		assertEquals(7, guardarropa.cantidadDePrendas());
+	}
+	
 	
 	@Test
 	public void test_guardaropaNoEstaVacio() {
