@@ -22,7 +22,7 @@ public class PrendaHLP {
 		Objects.requireNonNull(colorPrimario);
 		//FIN VALIDACIONES//
 		return new Prenda(unTipoDePrenda, unTipoDeTela, colorPrimario, colorSecundario);
-	}
+	}	
 	
 	private TipoDeTela verificarTelaValida(TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela) {
 		TipoDePrendaHLP tipoDePrendaHLP = new TipoDePrendaHLP();

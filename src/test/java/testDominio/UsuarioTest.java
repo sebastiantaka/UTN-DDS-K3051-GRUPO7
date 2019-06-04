@@ -9,16 +9,21 @@ import org.junit.Test;
 
 import dominio.Guardarropa;
 import dominio.Usuario;
+import negocio.GuardarropaHLP;
+import negocio.UsuarioHLP;
 
 public class UsuarioTest {
 	
 	Usuario usuario;
 	Guardarropa guardarropa;
+	UsuarioHLP usuariohlp;
+	
 	
 	@Before
 	public void setUp() throws Exception {
-		usuario = new Usuario(new HashSet<Guardarropa>());
+		usuario = new Usuario();
 		guardarropa = new Guardarropa();
+		usuariohlp = new UsuarioHLP();
 		
 	}
 
@@ -30,7 +35,7 @@ public class UsuarioTest {
 	@Test
 	public void UsuarioPuedeComprarGuardarropasTest() {
 		assertEquals(0, usuario.getGuardarropas().size());
-		usuario.adquirirGuardarropa(guardarropa);
+		usuariohlp.adquirirGuardarropa(usuario, guardarropa);
 		assertEquals(1, usuario.getGuardarropas().size());
 		assertTrue(usuario.getGuardarropas().contains(guardarropa));
 	}

@@ -16,17 +16,17 @@ public class QueMePongo {
 	public QueMePongo() {}
 
 	public Collection<Atuendo> obtenerSugerencias(Guardarropa guardarropa) {
-		return new AtuendoHLP().obtenerSugerencias(guardarropa);
+		return new GuardarropaHLP().obtenerSugerencias(guardarropa);
 	}
 	
 	public Atuendo obtenerSugerencia(Guardarropa guardarropa) {
-		return new AtuendoHLP().obtenerSugerencia(guardarropa);
+		return new GuardarropaHLP().obtenerSugerencia(guardarropa);
 	}
 	
 	public Usuario crearUsuario() {
 		return new UsuarioHLP().crearUsuario();
 	}
-	
+		
 	public void adquirirGuardarropa(Usuario usuario) {
 		new UsuarioHLP().adquirirGuardarropa(usuario, new Guardarropa());
 	}

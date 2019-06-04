@@ -25,30 +25,6 @@ public class AtuendoHLP {
 		atuendo.getPrendas().add(prenda);
 	}
 	
-	public Set<Atuendo> obtenerSugerencias(Guardarropa guardarropa){
-		Set<Atuendo> atuendos = new HashSet<Atuendo>();
-		List<Set<Prenda>> ropaSeparada = this.separarRopaPorCategoria(guardarropa);
-		Set<List<Prenda>> combinacionesConAccesorios = Sets.cartesianProduct(ropaSeparada);
-		ropaSeparada.remove(Categoria.ACCESORIO.ordinal());
-		Set<List<Prenda>> combinacionesSinAccesorios = Sets.cartesianProduct(ropaSeparada);
-		Set<List<Prenda>> combinacionesPosibles = Sets.union(combinacionesConAccesorios, combinacionesSinAccesorios);
-		combinacionesPosibles.forEach(combinacion -> atuendos.add(new Atuendo(combinacion)));
-		return atuendos;
-	}
-	
-	private List<Set<Prenda>> separarRopaPorCategoria(Guardarropa guardarropa){
-		ArrayList<Set<Prenda>> listaDeSetsDeRopa = new ArrayList<Set<Prenda>>();
-		for (int i = 0; i < Categoria.values().length; i++){
-			listaDeSetsDeRopa.add(new HashSet<Prenda>());
-		}
-		guardarropa.getPrendas().forEach(prenda -> listaDeSetsDeRopa.get(prenda.getCategoria().ordinal()).add(prenda));
-		return listaDeSetsDeRopa;
-	}
-	
-	public Atuendo obtenerSugerencia(Guardarropa guardarropa) {
-		Set<Atuendo> sugerencias = this.obtenerSugerencias(guardarropa);
-		Random rand = new Random();
-	    return (Atuendo) sugerencias.toArray()[rand.nextInt(sugerencias.size()+1)];	
-	}
+
 	
 }
