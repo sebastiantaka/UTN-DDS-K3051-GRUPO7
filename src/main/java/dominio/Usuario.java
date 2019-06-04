@@ -1,14 +1,13 @@
 package dominio;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Usuario {
 	
-	private Set<Guardarropa> guardarropas;
+	private Set<Guardarropa> guardarropas = new HashSet<Guardarropa>();
 	
-	public Usuario(Set<Guardarropa> unGuardarropas) {
-		this.setGuardarropas(unGuardarropas);
-	}
+	public Usuario() {	}
 
 	public Set<Guardarropa> getGuardarropas() {
 		return guardarropas;
@@ -16,10 +15,6 @@ public class Usuario {
 
 	public void setGuardarropas(Set<Guardarropa> guardarropas) {
 		this.guardarropas = guardarropas;
-	}
-	
-	public void adquirirGuardarropa(Guardarropa guardarropa) {
-		guardarropas.add(guardarropa);
 	}
 
 }

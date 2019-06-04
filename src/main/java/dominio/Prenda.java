@@ -1,9 +1,5 @@
 package dominio;
 
-import java.util.Objects;
-
-import exceptions.TipoDeTelaInvalidoException;
-
 public class Prenda {
 	
 	private TipoDePrenda tipoDePrenda;
@@ -11,23 +7,18 @@ public class Prenda {
 	private Color colorPrimario;
 	private Color colorSecundario;
 
-	public Prenda(TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color unColor) {
-		this.tipoDePrenda = Objects.requireNonNull(unTipoDePrenda, "Una prenda no puede no tener tipo");
-		this.tipoDeTela = this.verificarTela(unTipoDeTela);
-		this.colorPrimario = Objects.requireNonNull(unColor, "Una prenda no puede no tener color");
+	public Prenda(TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color colorPrimario, Color colorSecundario) {
+		this.setTipoDePrenda(unTipoDePrenda);
+		this.setTipoDeTela(unTipoDeTela);
+		this.setColorPrimario(colorPrimario);
+		this.setColorSecundario(colorSecundario);
 	}
 	
-	private TipoDeTela verificarTela(TipoDeTela unTipoDeTela) {
-		if (!this.getTipoDePrenda().esTelaValida(unTipoDeTela)) {
-			throw new TipoDeTelaInvalidoException();
-		}
-		return Objects.requireNonNull(unTipoDeTela, "Una prenda no puede no tener tipo de tela");
-	}
 	
 	/*Categoria*/
 	
 	public Categoria getCategoria() {
-		return tipoDePrenda.getCategoria();
+		return getTipoDePrenda().getCategoria();
 	}
 	
 	/*TipoDePrenda*/
@@ -36,11 +27,20 @@ public class Prenda {
 		return tipoDePrenda;
 	}
 	
+	public void setTipoDePrenda(TipoDePrenda tipoDePrenda) {
+		this.tipoDePrenda = tipoDePrenda;
+	}
+
+	
 	/*Color Primario*/
 	
 	public Color getColorPrimario() {
 		return colorPrimario;
 	}	
+	
+	public void setColorPrimario(Color colorPrimario) {
+		this.colorPrimario = colorPrimario;
+	}
 	
 	/*Color Secundario*/
 	
@@ -58,11 +58,10 @@ public class Prenda {
 		return tipoDeTela;
 	}
 
+	public void setTipoDeTela(TipoDeTela tipoDeTela) {
+		this.tipoDeTela = tipoDeTela;
+	}
 
-	
-	
-	
-	
 
 }
 
