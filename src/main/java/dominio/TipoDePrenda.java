@@ -1,17 +1,17 @@
 package dominio;
 
-import java.util.Set;
+import java.util.Collection;
 
 public class TipoDePrenda {
 	
 	private String nombre;
 	private Categoria categoria;
-	private Set<TipoDeTela> tiposDeTelasPermitidas;
+	private Collection<TipoDeTela> tiposDeTelasPermitidas;
 	
-	public TipoDePrenda(String nombre, Categoria categoria, Set<TipoDeTela> tiposDeTelasPermitidas) {
+	public TipoDePrenda(String nombre, Categoria categoria, Collection<TipoDeTela> tiposDeTelaPermitidos) {
 		this.nombre = nombre;
 		this.categoria = categoria;
-		this.setTiposDeTelasPermitidas(tiposDeTelasPermitidas);
+		this.setTiposDeTelasPermitidas(tiposDeTelaPermitidos);
 	}
 
 	/* Categoria */
@@ -23,23 +23,15 @@ public class TipoDePrenda {
 	
 	/* Tipo De Telas Permitidas */
 	
-	public Set<TipoDeTela> getTiposDeTelasPermitidas() {
+	public Collection<TipoDeTela> getTiposDeTelasPermitidas() {
 		return tiposDeTelasPermitidas;
 	}
 
-	public void setTiposDeTelasPermitidas(Set<TipoDeTela> tiposDeTelasPermitidas) {
-		this.tiposDeTelasPermitidas = tiposDeTelasPermitidas;
+	public void setTiposDeTelasPermitidas(Collection<TipoDeTela> tiposDeTelaPermitidos) {
+		this.tiposDeTelasPermitidas = tiposDeTelaPermitidos;
 	}
 	
-	public void agregarTelaPermitida(TipoDeTela tela) {
-		/* Podemos hacer esto por ser Set*/
-		tiposDeTelasPermitidas.add(tela);
-	}
 	
-	public boolean esTelaValida(TipoDeTela tela) {
-		return tiposDeTelasPermitidas.contains(tela);
-	}
-
 	/* Nombre */
 	
 	public String getNombre() {

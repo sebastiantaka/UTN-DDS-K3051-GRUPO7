@@ -11,12 +11,16 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
+import dominio.Atuendo;
 import dominio.Categoria;
 import dominio.Color;
 import dominio.Guardarropa;
 import dominio.Prenda;
 import dominio.TipoDePrenda;
 import dominio.TipoDeTela;
+import negocio.GuardarropaHLP;
+import negocio.PrendaHLP;
+import negocio.TipoDePrendaHLP;
 
 public class GuardaropaTest {
 	
@@ -36,47 +40,56 @@ public class GuardaropaTest {
 	private Prenda prenda5;
 	private Prenda prenda6;
 	private Prenda prenda7;
+	private TipoDePrendaHLP tipoPrenda = new TipoDePrendaHLP();
+	private PrendaHLP prendaH = new PrendaHLP();
+	private GuardarropaHLP guardarropaH = new GuardarropaHLP();
+	
 	
 	@Before
 	public void init() {
+
 		tiposDeTelaRemera = new HashSet<TipoDeTela>();
-		tiposDeTelaRemera.add(TipoDeTela.ALGODON);
-		
 		tiposDelPantalon = new HashSet<TipoDeTela>();
-		tiposDelPantalon.add(TipoDeTela.JEAN);
-		
 		tiposDeZapatilla = new HashSet<TipoDeTela>();
+		tiposDeAnteojos = new HashSet<TipoDeTela>();
+		
+		tiposDeAnteojos.add(TipoDeTela.VIDRIO);
+		tiposDeTelaRemera.add(TipoDeTela.ALGODON);
+		tiposDelPantalon.add(TipoDeTela.JEAN);
 		tiposDeZapatilla.add(TipoDeTela.CUERO);
 		tiposDeZapatilla.add(TipoDeTela.GAMUZA);
 		
-		tiposDeAnteojos = new HashSet<TipoDeTela>();
-		tiposDeAnteojos.add(TipoDeTela.VIDRIO);
+		remera = tipoPrenda.crearTipoDePrenda("Remera",Categoria.PARTE_SUPERIOR,  tiposDeTelaRemera);
+		pantalon = tipoPrenda.crearTipoDePrenda("Pantalon", Categoria.PARTE_INFERIOR, tiposDelPantalon );
+		zapatilla = tipoPrenda.crearTipoDePrenda("Zapatilla", Categoria.CALZADO, tiposDeZapatilla );
+		anteojo = tipoPrenda.crearTipoDePrenda("Anteojos", Categoria.ACCESORIO, tiposDeAnteojos );
 		
-		remera = new TipoDePrenda("Remera", Categoria.PARTE_SUPERIOR, tiposDeTelaRemera );
-		pantalon = new TipoDePrenda("Pantalon", Categoria.PARTE_INFERIOR, tiposDelPantalon );
-		zapatilla = new TipoDePrenda("Zapatilla", Categoria.CALZADO, tiposDeZapatilla );
-		anteojo = new TipoDePrenda("Anteojos", Categoria.ACCESORIO, tiposDeAnteojos );
+		tipoPrenda.agregarTelaPermitida(anteojo, TipoDeTela.VIDRIO);
+		tipoPrenda.agregarTelaPermitida(remera, TipoDeTela.ALGODON);
+		tipoPrenda.agregarTelaPermitida(pantalon, TipoDeTela.JEAN);
+		tipoPrenda.agregarTelaPermitida(zapatilla, TipoDeTela.CUERO);
+		tipoPrenda.agregarTelaPermitida(zapatilla, TipoDeTela.GAMUZA);
 		
-		prenda = new Prenda(remera ,TipoDeTela.ALGODON, Color.BLANCO);
-		prenda2 = new Prenda(remera ,TipoDeTela.ALGODON, Color.ROJO);
-		prenda3 = new Prenda(pantalon, TipoDeTela.JEAN, Color.AZUL);
-		prenda4 = new Prenda(zapatilla, TipoDeTela.CUERO, Color.NEGRO);
-		prenda5 = new Prenda(zapatilla, TipoDeTela.CUERO, Color.ROJO);
-		prenda6 = new Prenda(anteojo, TipoDeTela.VIDRIO, Color.NEGRO);
+		prenda = prendaH.crearPrendaDeUnColor(remera, TipoDeTela.ALGODON,  Color.BLANCO);
+		prenda2 = prendaH.crearPrendaDeUnColor(remera ,TipoDeTela.ALGODON, Color.ROJO);
+		prenda3 = prendaH.crearPrendaDeUnColor(pantalon, TipoDeTela.JEAN, Color.AZUL);
+		prenda4 = prendaH.crearPrendaDeUnColor(zapatilla, TipoDeTela.CUERO, Color.NEGRO);
+		prenda5 = prendaH.crearPrendaDeUnColor(zapatilla, TipoDeTela.CUERO, Color.ROJO);
+		prenda6 = prendaH.crearPrendaDeUnColor(anteojo, TipoDeTela.VIDRIO, Color.NEGRO);
 		
 		guardarropa = new Guardarropa();
 		
-		guardarropa.agregarPrendas(prenda);
-		guardarropa.agregarPrendas(prenda2);
-		guardarropa.agregarPrendas(prenda3);
-		guardarropa.agregarPrendas(prenda4);
-		guardarropa.agregarPrendas(prenda5);
-		guardarropa.agregarPrendas(prenda6);
+		guardarropaH.adquirirPrenda(guardarropa, prenda);
+		guardarropaH.adquirirPrenda(guardarropa, prenda2);
+		guardarropaH.adquirirPrenda(guardarropa, prenda3);
+		guardarropaH.adquirirPrenda(guardarropa, prenda4);
+		guardarropaH.adquirirPrenda(guardarropa, prenda5);
+		guardarropaH.adquirirPrenda(guardarropa, prenda6);
 		
 	}
 	
 	@Test
-	public void test_guardaropaTieneDosPrendas() {
+	public void test_guardaropaTienePrendas() {
 		
 		assertEquals(6, guardarropa.cantidadDePrendas());
 	}
@@ -84,8 +97,8 @@ public class GuardaropaTest {
 	@Test
 	public void test_guardaropaAgregaPrendas() {
 		
-		prenda7 = new Prenda(zapatilla, TipoDeTela.GAMUZA, Color.NEGRO);
-		guardarropa.agregarPrendas(prenda7);
+		prenda7 = prendaH.crearPrendaDeUnColor(zapatilla, TipoDeTela.GAMUZA, Color.NEGRO);
+		guardarropaH.adquirirPrenda(guardarropa, prenda7);
 		assertEquals(7, guardarropa.cantidadDePrendas());
 	}
 	
@@ -105,7 +118,7 @@ public class GuardaropaTest {
 	
 	@Test
 	public void separarRopaPorCategoriaTest() {
-		List<Set<Prenda>> ropaSeparada = guardarropa.separarRopaPorCategoria();
+		List<Set<Prenda>> ropaSeparada = guardarropaH.separarRopaPorCategoria(guardarropa);
 		assertTrue(ropaSeparada.get(prenda.getCategoria().ordinal()).contains(prenda));
 		assertTrue(ropaSeparada.get(prenda2.getCategoria().ordinal()).contains(prenda2));
 		assertTrue(ropaSeparada.get(prenda3.getCategoria().ordinal()).contains(prenda3));
@@ -115,7 +128,7 @@ public class GuardaropaTest {
 	}
 	
 	@Test public void obtenerSugerenciasTest() {
-		Set<List<Prenda>> sugerencias = guardarropa.obtenerSugerencias();
+		Set<Atuendo> sugerencias = guardarropaH.obtenerSugerencias(guardarropa);
 		sugerencias.forEach(sugerencia -> System.out.println(sugerencia));
 		assertEquals(8, sugerencias.size());
 	}

@@ -1,12 +1,24 @@
 package dominio;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class Atuendo {
 	
-	private ArrayList<Prenda> prendas = new ArrayList<Prenda>();
+	private Collection<Prenda> prendas = new ArrayList<Prenda>();
 
-	public Atuendo(ArrayList<Prenda> prendas) {
+	public Atuendo() {}
+
+	public Atuendo(List<Prenda> unasPrendas) {
+		prendas = unasPrendas;
+	}
+
+	public Collection<Prenda> getPrendas() {
+		return prendas;
+	}
+
+	public void setPrendas(Collection<Prenda> prendas) {
 		this.prendas = prendas;
 	}
 
