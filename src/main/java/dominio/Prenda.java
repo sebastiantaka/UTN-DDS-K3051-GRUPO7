@@ -6,7 +6,7 @@ public class Prenda {
 	private TipoDeTela tipoDeTela;
 	private Color colorPrimario;
 	private Color colorSecundario;
-
+//todo nombre
 	public Prenda(TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color colorPrimario, Color colorSecundario) {
 		this.setTipoDePrenda(unTipoDePrenda);
 		this.setTipoDeTela(unTipoDeTela);
@@ -63,6 +63,13 @@ public class Prenda {
 	}
 
 
+	@Override
+	public String toString() {
+		return "Prenda [tipoDePrenda=" + tipoDePrenda + ", tipoDeTela=" + tipoDeTela + ", colorPrimario="
+				+ colorPrimario + ", colorSecundario=" + colorSecundario + "]";
+	}
+
+	
 }
 
 

@@ -12,7 +12,7 @@ public class PrendaHLP {
 	public PrendaHLP() { }
 	
 	public Prenda crearPrendaDeUnColor(TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color unColor) {
-		return new Prenda(unTipoDePrenda, unTipoDeTela, unColor, null);
+		return new Prenda(unTipoDePrenda, unTipoDeTela, unColor, null);//TODO actualizar 
 	}
 	
 	public Prenda crearPrenda(TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color colorPrimario, Color colorSecundario) {
