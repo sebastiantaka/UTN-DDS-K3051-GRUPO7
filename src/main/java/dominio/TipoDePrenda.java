@@ -7,6 +7,7 @@ public class TipoDePrenda {
 	private String nombre;
 	private Categoria categoria;
 	private Collection<TipoDeTela> tiposDeTelasPermitidas;
+	private Capa capa;
 	
 	public TipoDePrenda(String nombre, Categoria categoria, Collection<TipoDeTela> tiposDeTelaPermitidos) {
 		this.setNombre(nombre);
@@ -50,6 +51,16 @@ public class TipoDePrenda {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	
+	/*Capa*/
+	
+	public Capa getCapa() {
+		return capa;
+	}
+
+	public void setCapa(Capa capa) {
+		this.capa = capa;
 	}
 
 	

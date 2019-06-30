@@ -11,6 +11,7 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
+import dominio.Capa;
 import dominio.Categoria;
 import dominio.Color;
 import dominio.Guardarropa;
@@ -38,9 +39,12 @@ public class PrendaTest {
 	private Set<TipoDeTela> tiposDeAnteojos;
 	private TipoDePrendaHLP tipoPrenda = new TipoDePrendaHLP();
 	private PrendaHLP prendaH = new PrendaHLP();
+	private Capa capaMedia;
 	
 	@Before
 	public void init() {
+		
+		capaMedia = new Capa(1);
 		
 		tiposDeTelaRemera = new HashSet<TipoDeTela>();
 		tiposDelPantalon = new HashSet<TipoDeTela>();
@@ -54,16 +58,16 @@ public class PrendaTest {
 		tiposDeZapatilla.add(TipoDeTela.GAMUZA);
 		
 		
-		pantalon = tipoPrenda.crearTipoDePrenda("Pantalon", Categoria.PARTE_INFERIOR, tiposDelPantalon );
-		zapatilla = tipoPrenda.crearTipoDePrenda("Zapatilla", Categoria.CALZADO, tiposDeZapatilla );
-		anteojo = tipoPrenda.crearTipoDePrenda("Anteojos", Categoria.ACCESORIO, tiposDeAnteojos );
-		tipoPrenda.agregarTelaPermitida(anteojo, TipoDeTela.VIDRIO);
+		pantalon = tipoPrenda.crearTipoDePrenda("Pantalon", Categoria.PARTE_INFERIOR, tiposDelPantalon, capaMedia);
+		zapatilla = tipoPrenda.crearTipoDePrenda("Zapatilla", Categoria.CALZADO, tiposDeZapatilla, capaMedia);
+		anteojo = tipoPrenda.crearTipoDePrenda("Anteojos", Categoria.ACCESORIO, tiposDeAnteojos, capaMedia);
 		
+		tipoPrenda.agregarTelaPermitida(anteojo, TipoDeTela.VIDRIO);
 		tipoPrenda.agregarTelaPermitida(pantalon, TipoDeTela.JEAN);
 		tipoPrenda.agregarTelaPermitida(zapatilla, TipoDeTela.CUERO);
 		tipoPrenda.agregarTelaPermitida(zapatilla, TipoDeTela.GAMUZA);
-		prenda = prendaH.crearPrendaDeUnColor("Remera de Algodon Blanca Lisa", remera, TipoDeTela.ALGODON,  Color.BLANCO);
 		
+		prenda = prendaH.crearPrendaDeUnColor("Remera de Algodon Blanca Lisa", remera, TipoDeTela.ALGODON,  Color.BLANCO);
 		prenda3 = prendaH.crearPrendaDeUnColor("Pantalon de Jean Azul", pantalon, TipoDeTela.JEAN, Color.AZUL);
 		prenda4 = prendaH.crearPrendaDeUnColor("Deportivas Negras", zapatilla, TipoDeTela.CUERO, Color.NEGRO);
 		prenda5 = prendaH.crearPrendaDeUnColor("Deportivas Rojas", zapatilla, TipoDeTela.CUERO, Color.ROJO);
@@ -74,7 +78,7 @@ public class PrendaTest {
 	
 	@Test
 	public void test_prendaDeUnColor() {
-		remera = tipoPrenda.crearTipoDePrenda("Remera",Categoria.PARTE_SUPERIOR,  tiposDeTelaRemera);
+		remera = tipoPrenda.crearTipoDePrenda("Remera",Categoria.PARTE_SUPERIOR,  tiposDeTelaRemera, capaMedia);
 		tipoPrenda.agregarTelaPermitida(remera, TipoDeTela.ALGODON);
 		prenda2 = prendaH.crearPrendaDeUnColor("Remera de algodon roja", remera ,TipoDeTela.ALGODON, Color.ROJO);
 		assertEquals(Prenda.class , prenda2.getClass());
@@ -83,7 +87,7 @@ public class PrendaTest {
 	
 	@Test
 	public void test_prenda() {
-		remera = tipoPrenda.crearTipoDePrenda("Remera",Categoria.PARTE_SUPERIOR,  tiposDeTelaRemera);
+		remera = tipoPrenda.crearTipoDePrenda("Remera",Categoria.PARTE_SUPERIOR,  tiposDeTelaRemera, capaMedia);
 		tipoPrenda.agregarTelaPermitida(remera, TipoDeTela.ALGODON);
 		prenda2 = prendaH.crearPrenda("Remera de algodon Roja y azul Rayada", remera ,TipoDeTela.ALGODON, Color.ROJO, Color.AZUL);
 		assertEquals(Prenda.class , prenda2.getClass());

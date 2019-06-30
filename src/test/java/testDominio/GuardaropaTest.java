@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dominio.Atuendo;
+import dominio.Capa;
 import dominio.Categoria;
 import dominio.Color;
 import dominio.Guardarropa;
@@ -43,11 +44,13 @@ public class GuardaropaTest {
 	private TipoDePrendaHLP tipoPrenda = new TipoDePrendaHLP();
 	private PrendaHLP prendaH = new PrendaHLP();
 	private GuardarropaHLP guardarropaH = new GuardarropaHLP();
-	
+	private Capa capaMedia;
 	
 	@Before
 	public void init() {
-
+		
+		capaMedia = new Capa(1);
+		
 		tiposDeTelaRemera = new HashSet<TipoDeTela>();
 		tiposDelPantalon = new HashSet<TipoDeTela>();
 		tiposDeZapatilla = new HashSet<TipoDeTela>();
@@ -59,10 +62,10 @@ public class GuardaropaTest {
 		tiposDeZapatilla.add(TipoDeTela.CUERO);
 		tiposDeZapatilla.add(TipoDeTela.GAMUZA);
 		
-		remera = tipoPrenda.crearTipoDePrenda("Remera",Categoria.PARTE_SUPERIOR,  tiposDeTelaRemera);
-		pantalon = tipoPrenda.crearTipoDePrenda("Pantalon", Categoria.PARTE_INFERIOR, tiposDelPantalon );
-		zapatilla = tipoPrenda.crearTipoDePrenda("Zapatilla", Categoria.CALZADO, tiposDeZapatilla );
-		anteojo = tipoPrenda.crearTipoDePrenda("Anteojos", Categoria.ACCESORIO, tiposDeAnteojos );
+		remera = tipoPrenda.crearTipoDePrenda("Remera",Categoria.PARTE_SUPERIOR,  tiposDeTelaRemera, capaMedia);
+		pantalon = tipoPrenda.crearTipoDePrenda("Pantalon", Categoria.PARTE_INFERIOR, tiposDelPantalon, capaMedia );
+		zapatilla = tipoPrenda.crearTipoDePrenda("Zapatilla", Categoria.CALZADO, tiposDeZapatilla, capaMedia );
+		anteojo = tipoPrenda.crearTipoDePrenda("Anteojos", Categoria.ACCESORIO, tiposDeAnteojos, capaMedia );
 		
 		tipoPrenda.agregarTelaPermitida(anteojo, TipoDeTela.VIDRIO);
 		tipoPrenda.agregarTelaPermitida(remera, TipoDeTela.ALGODON);
