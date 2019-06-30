@@ -10,7 +10,7 @@ public class Atuendo {
 
 	public Atuendo() {}
 
-	public Atuendo(List<Prenda> unasPrendas) {
+	public Atuendo(Collection<Prenda> unasPrendas) {
 		prendas = unasPrendas;
 	}
 
