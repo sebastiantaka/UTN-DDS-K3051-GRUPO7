@@ -9,8 +9,8 @@ public class TipoDePrenda {
 	private Collection<TipoDeTela> tiposDeTelasPermitidas;
 	
 	public TipoDePrenda(String nombre, Categoria categoria, Collection<TipoDeTela> tiposDeTelaPermitidos) {
-		this.nombre = nombre;
-		this.categoria = categoria;
+		this.setNombre(nombre);
+		this.setCategoria(categoria);
 		this.setTiposDeTelasPermitidas(tiposDeTelaPermitidos);
 	}
 
@@ -20,6 +20,10 @@ public class TipoDePrenda {
 		return this.categoria;
 	}
 	
+	private void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+		
+	}
 	
 	/* Tipo De Telas Permitidas */
 	

@@ -62,12 +62,12 @@ public class PrendaTest {
 		tipoPrenda.agregarTelaPermitida(pantalon, TipoDeTela.JEAN);
 		tipoPrenda.agregarTelaPermitida(zapatilla, TipoDeTela.CUERO);
 		tipoPrenda.agregarTelaPermitida(zapatilla, TipoDeTela.GAMUZA);
-		prenda = prendaH.crearPrendaDeUnColor(remera, TipoDeTela.ALGODON,  Color.BLANCO);
+		prenda = prendaH.crearPrendaDeUnColor("Remera de Algodon Blanca Lisa", remera, TipoDeTela.ALGODON,  Color.BLANCO);
 		
-		prenda3 = prendaH.crearPrendaDeUnColor(pantalon, TipoDeTela.JEAN, Color.AZUL);
-		prenda4 = prendaH.crearPrendaDeUnColor(zapatilla, TipoDeTela.CUERO, Color.NEGRO);
-		prenda5 = prendaH.crearPrendaDeUnColor(zapatilla, TipoDeTela.CUERO, Color.ROJO);
-		prenda6 = prendaH.crearPrendaDeUnColor(anteojo, TipoDeTela.VIDRIO, Color.NEGRO);
+		prenda3 = prendaH.crearPrendaDeUnColor("Pantalon de Jean Azul", pantalon, TipoDeTela.JEAN, Color.AZUL);
+		prenda4 = prendaH.crearPrendaDeUnColor("Deportivas Negras", zapatilla, TipoDeTela.CUERO, Color.NEGRO);
+		prenda5 = prendaH.crearPrendaDeUnColor("Deportivas Rojas", zapatilla, TipoDeTela.CUERO, Color.ROJO);
+		prenda6 = prendaH.crearPrendaDeUnColor("Anteojos de Sol",anteojo, TipoDeTela.VIDRIO, Color.NEGRO);
 		
 		
 	}
@@ -76,7 +76,7 @@ public class PrendaTest {
 	public void test_prendaDeUnColor() {
 		remera = tipoPrenda.crearTipoDePrenda("Remera",Categoria.PARTE_SUPERIOR,  tiposDeTelaRemera);
 		tipoPrenda.agregarTelaPermitida(remera, TipoDeTela.ALGODON);
-		prenda2 = prendaH.crearPrendaDeUnColor(remera ,TipoDeTela.ALGODON, Color.ROJO);
+		prenda2 = prendaH.crearPrendaDeUnColor("Remera de algodon roja", remera ,TipoDeTela.ALGODON, Color.ROJO);
 		assertEquals(Prenda.class , prenda2.getClass());
 		
 	}	
@@ -85,7 +85,7 @@ public class PrendaTest {
 	public void test_prenda() {
 		remera = tipoPrenda.crearTipoDePrenda("Remera",Categoria.PARTE_SUPERIOR,  tiposDeTelaRemera);
 		tipoPrenda.agregarTelaPermitida(remera, TipoDeTela.ALGODON);
-		prenda2 = prendaH.crearPrenda(remera ,TipoDeTela.ALGODON, Color.ROJO, Color.AZUL);
+		prenda2 = prendaH.crearPrenda("Remera de algodon Roja y azul Rayada", remera ,TipoDeTela.ALGODON, Color.ROJO, Color.AZUL);
 		assertEquals(Prenda.class , prenda2.getClass());
 		
 	}	
