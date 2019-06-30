@@ -92,7 +92,6 @@ public class PrendaTest {
 	
 	@Test
 	public void test_agregarTelaAprenda() {
-		
 		tipoPrenda.agregarTelaPermitida(pantalon, TipoDeTela.CUERO);
 		assertTrue(tipoPrenda.esTelaValida(pantalon, TipoDeTela.CUERO));
 		

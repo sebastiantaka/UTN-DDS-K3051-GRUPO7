@@ -22,6 +22,11 @@ public class Atuendo {
 		this.prendas = prendas;
 	}
 
+	@Override
+	public String toString() {
+		return "Atuendo [prendas=" + prendas + "]";
+	}
+	
 	
 	
 }

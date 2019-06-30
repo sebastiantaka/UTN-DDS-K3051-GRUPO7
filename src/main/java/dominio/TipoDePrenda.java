@@ -23,6 +23,12 @@ public class TipoDePrenda {
 	
 	/* Tipo De Telas Permitidas */
 	
+	@Override
+	public String toString() {
+		return "TipoDePrenda [nombre=" + nombre + ", categoria=" + categoria + ", tiposDeTelasPermitidas="
+				+ tiposDeTelasPermitidas + "]";
+	}
+
 	public Collection<TipoDeTela> getTiposDeTelasPermitidas() {
 		return tiposDeTelasPermitidas;
 	}
