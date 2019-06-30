@@ -35,7 +35,7 @@ public class QueMePongo {
 		return new TipoDePrendaHLP().crearTipoDePrenda(nombre, categoria, tiposDeTelaPermitidos);
 	}
 	
-	public Prenda CrearPrendaDeDosColores(TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color colorPrimario, Color colorSecundario) {
-		return new PrendaHLP().crearPrenda(unTipoDePrenda, unTipoDeTela, colorPrimario, colorSecundario);
+	public Prenda CrearPrendaDeDosColores(String unNombre, TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color colorPrimario, Color colorSecundario) {
+		return new PrendaHLP().crearPrenda(unNombre, unTipoDePrenda, unTipoDeTela, colorPrimario, colorSecundario);
 	}
 }

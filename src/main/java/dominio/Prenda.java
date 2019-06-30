@@ -6,12 +6,14 @@ public class Prenda {
 	private TipoDeTela tipoDeTela;
 	private Color colorPrimario;
 	private Color colorSecundario;
-//todo nombre
-	public Prenda(TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color colorPrimario, Color colorSecundario) {
+	private String nombre;
+	
+	public Prenda(String unNombre, TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color colorPrimario, Color colorSecundario) {
 		this.setTipoDePrenda(unTipoDePrenda);
 		this.setTipoDeTela(unTipoDeTela);
 		this.setColorPrimario(colorPrimario);
 		this.setColorSecundario(colorSecundario);
+		this.setNombre(unNombre);
 	}
 	
 	
@@ -67,6 +69,16 @@ public class Prenda {
 	public String toString() {
 		return "Prenda [tipoDePrenda=" + tipoDePrenda + ", tipoDeTela=" + tipoDeTela + ", colorPrimario="
 				+ colorPrimario + ", colorSecundario=" + colorSecundario + "]";
+	}
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	

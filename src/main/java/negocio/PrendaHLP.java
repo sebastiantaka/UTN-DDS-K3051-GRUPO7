@@ -11,17 +11,17 @@ public class PrendaHLP {
 
 	public PrendaHLP() { }
 	
-	public Prenda crearPrendaDeUnColor(TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color unColor) {
-		return new Prenda(unTipoDePrenda, unTipoDeTela, unColor, null);//TODO actualizar 
+	public Prenda crearPrendaDeUnColor(String unNombre, TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color unColor) {
+		return new Prenda(unNombre, unTipoDePrenda, unTipoDeTela, unColor, null);//TODO actualizar 
 	}
 	
-	public Prenda crearPrenda(TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color colorPrimario, Color colorSecundario) {
+	public Prenda crearPrenda(String unNombre, TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color colorPrimario, Color colorSecundario) {
 		//Validaciones//
 		Objects.requireNonNull(unTipoDePrenda);
 		this.verificarTelaValida(unTipoDePrenda, unTipoDeTela);
 		Objects.requireNonNull(colorPrimario);
 		//FIN VALIDACIONES//
-		return new Prenda(unTipoDePrenda, unTipoDeTela, colorPrimario, colorSecundario);
+		return new Prenda(unNombre, unTipoDePrenda, unTipoDeTela, colorPrimario, colorSecundario);
 	}	
 	
 	private TipoDeTela verificarTelaValida(TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela) {

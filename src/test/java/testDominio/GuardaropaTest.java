@@ -70,12 +70,12 @@ public class GuardaropaTest {
 		tipoPrenda.agregarTelaPermitida(zapatilla, TipoDeTela.CUERO);
 		tipoPrenda.agregarTelaPermitida(zapatilla, TipoDeTela.GAMUZA);
 		
-		prenda = prendaH.crearPrendaDeUnColor(remera, TipoDeTela.ALGODON,  Color.BLANCO);
-		prenda2 = prendaH.crearPrendaDeUnColor(remera ,TipoDeTela.ALGODON, Color.ROJO);
-		prenda3 = prendaH.crearPrendaDeUnColor(pantalon, TipoDeTela.JEAN, Color.AZUL);
-		prenda4 = prendaH.crearPrendaDeUnColor(zapatilla, TipoDeTela.CUERO, Color.NEGRO);
-		prenda5 = prendaH.crearPrendaDeUnColor(zapatilla, TipoDeTela.CUERO, Color.ROJO);
-		prenda6 = prendaH.crearPrendaDeUnColor(anteojo, TipoDeTela.VIDRIO, Color.NEGRO);
+		prenda = prendaH.crearPrendaDeUnColor("Remera Blanca Lisa", remera, TipoDeTela.ALGODON,  Color.BLANCO);
+		prenda2 = prendaH.crearPrendaDeUnColor("Remera Roja Lisa", remera ,TipoDeTela.ALGODON, Color.ROJO);
+		prenda3 = prendaH.crearPrendaDeUnColor("Pantalon Jean Azul", pantalon, TipoDeTela.JEAN, Color.AZUL);
+		prenda4 = prendaH.crearPrendaDeUnColor("Zapatilla de Cuero Negro", zapatilla, TipoDeTela.CUERO, Color.NEGRO);
+		prenda5 = prendaH.crearPrendaDeUnColor("Zapatilla de Cuero Rojo", zapatilla, TipoDeTela.CUERO, Color.ROJO);
+		prenda6 = prendaH.crearPrendaDeUnColor("Anteojos de Sol", anteojo, TipoDeTela.VIDRIO, Color.NEGRO);
 		
 		guardarropa = new Guardarropa();
 		
@@ -97,7 +97,7 @@ public class GuardaropaTest {
 	@Test
 	public void test_guardaropaAgregaPrendas() {
 		
-		prenda7 = prendaH.crearPrendaDeUnColor(zapatilla, TipoDeTela.GAMUZA, Color.NEGRO);
+		prenda7 = prendaH.crearPrendaDeUnColor("Zapatilla de Gamuza", zapatilla, TipoDeTela.GAMUZA, Color.NEGRO);
 		guardarropaH.adquirirPrenda(guardarropa, prenda7);
 		assertEquals(7, guardarropa.cantidadDePrendas());
 	}
