@@ -9,6 +9,17 @@ public class Categoria {
 	private Collection<Capa> capas = new ArrayList<Capa>();
 	private Boolean esOpcional;
 	
+	public Categoria(String descripcion, Collection<Capa> capas, Boolean esOpcional) {
+		this.descripcion = descripcion;
+		this.capas = capas;
+		this.esOpcional = esOpcional;
+	}
+
+	@Override
+	public String toString() {
+		return "Categoria [descripcion=" + descripcion + ", capas=" + capas + ", esOpcional=" + esOpcional + "]";
+	}
+	
 	/*DESCRIPCION: Descripcion de la categoria*/
 	
 	public String getDescripcion() {

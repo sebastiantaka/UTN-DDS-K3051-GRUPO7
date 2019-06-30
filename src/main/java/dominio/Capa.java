@@ -7,6 +7,11 @@ public class Capa {
 	private Boolean esOpcional;
 	
 	
+	@Override
+	public String toString() {
+		return "Capa [descripcion=" + descripcion + ", orden=" + orden + ", esOpcional=" + esOpcional + "]";
+	}
+
 	public Capa(String descipcion, Integer orden, Boolean esOpcional) {
 		this.setOrden(orden);
 		this.setDescripcion(descripcion);

@@ -8,6 +8,7 @@ public class TipoDePrenda {
 	private Categoria categoria;
 	private Collection<TipoDeTela> tiposDeTelasPermitidas;
 	private Capa capa;
+	private NivelDeCalorStrategy calculoDeCalor;
 	
 	public TipoDePrenda(String nombre, Categoria categoria, Collection<TipoDeTela> tiposDeTelaPermitidos) {
 		this.setNombre(nombre);
@@ -62,7 +63,15 @@ public class TipoDePrenda {
 	public void setCapa(Capa capa) {
 		this.capa = capa;
 	}
-
 	
+	/*CalculoDeCalor*/
+	
+	public NivelDeCalorStrategy getCalculoDeCalor() {
+		return calculoDeCalor;
+	}
+
+	public void setCalculoDeCalor(NivelDeCalorStrategy calculoDeCalor) {
+		this.calculoDeCalor = calculoDeCalor;
+	}	
 
 }
