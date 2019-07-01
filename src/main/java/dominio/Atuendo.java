@@ -21,7 +21,7 @@ public class Atuendo {
 	public void setPrendas(Collection<Prenda> prendas) {
 		this.prendas = prendas;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Atuendo [prendas=" + prendas + "]";

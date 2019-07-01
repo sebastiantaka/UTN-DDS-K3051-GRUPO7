@@ -78,8 +78,8 @@ public class Prenda {
 
 	@Override
 	public String toString() {
-		return "Prenda [nombre=" + nombre + ", tipoDePrenda=" + tipoDePrenda + ", tipoDeTela=" + tipoDeTela
-				+ ", colorPrimario=" + colorPrimario + ", colorSecundario=" + colorSecundario + "]";
+		return "Prenda [nombre=" + nombre /*+ ", tipoDePrenda=" + tipoDePrenda + ", tipoDeTela=" + tipoDeTela
+				+ ", colorPrimario=" + colorPrimario + ", colorSecundario=" + colorSecundario*/ + "]";
 	}
 
 }

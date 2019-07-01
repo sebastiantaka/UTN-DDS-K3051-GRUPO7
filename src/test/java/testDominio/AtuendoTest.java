@@ -1,15 +1,17 @@
 package testDominio;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import dominio.Atuendo;
 import dominio.Capa;
 import dominio.Categoria;
 import dominio.Color;
@@ -18,11 +20,12 @@ import dominio.NivelDeCalorNulo;
 import dominio.Prenda;
 import dominio.TipoDePrenda;
 import dominio.TipoDeTela;
+import negocio.AtuendoHLP;
 import negocio.GuardarropaHLP;
 import negocio.PrendaHLP;
 import negocio.TipoDePrendaHLP;
 
-public class GuardaropaTest {
+public class AtuendoTest {
 	
 	private Prenda prenda;
 	private Prenda prenda2;
@@ -39,9 +42,9 @@ public class GuardaropaTest {
 	private Prenda prenda4;
 	private Prenda prenda5;
 	private Prenda prenda6;
-	private Prenda prenda7;
 	private TipoDePrendaHLP tipoPrenda = new TipoDePrendaHLP();
 	private PrendaHLP prendaH = new PrendaHLP();
+	private AtuendoHLP atuendoH = new AtuendoHLP();
 	private GuardarropaHLP guardarropaH = new GuardarropaHLP();
 	private Capa capaMedia;
 	private Categoria parteSuperior;
@@ -103,34 +106,22 @@ public class GuardaropaTest {
 		guardarropaH.adquirirPrenda(guardarropa, prenda6);
 		
 	}
-	
+
 	@Test
-	public void test_guardaropaTienePrendas() {
-		
-		assertEquals(6, guardarropa.cantidadDePrendas());
+	public void separarRopaPorCategoriaTest() {
+		Map<Categoria, Set<Prenda>> ropaSeparada = atuendoH.separarRopaPorCategoria(guardarropa.getPrendas());
+		assertTrue(ropaSeparada.get(prenda.getCategoria()).contains(prenda));
+		assertTrue(ropaSeparada.get(prenda2.getCategoria()).contains(prenda2));
+		assertTrue(ropaSeparada.get(prenda3.getCategoria()).contains(prenda3));
+		assertTrue(ropaSeparada.get(prenda4.getCategoria()).contains(prenda4));
+		assertTrue(ropaSeparada.get(prenda5.getCategoria()).contains(prenda5));
+		assertTrue(ropaSeparada.get(prenda6.getCategoria()).contains(prenda6));
 	}
 	
-	@Test
-	public void test_guardaropaAgregaPrendas() {
-		
-		prenda7 = prendaH.crearPrendaDeUnColor("Zapatilla de Gamuza", zapatilla, TipoDeTela.GAMUZA, Color.NEGRO);
-		guardarropaH.adquirirPrenda(guardarropa, prenda7);
-		assertEquals(7, guardarropa.cantidadDePrendas());
+	@Test public void obtenerSugerenciasTest() {
+		Set<Atuendo> sugerencias = atuendoH.obtenerSugerencias(guardarropa);
+		sugerencias.forEach(sugerencia -> System.out.println(sugerencia));
+		assertEquals(8, sugerencias.size());
 	}
-	
-	
-	@Test
-	public void test_guardaropaNoEstaVacio() {
-		
-		assertNotNull(guardarropa);
-	}
-	
-	/*
-	@Test
-	public void test_alMenosUnAtuendo(){
-	assertEquals(true, guardaropa.getPrendasDeseadas(Zapatillas.class).stream.findAny());
-	}
-	*/
-	
-	
+
 }

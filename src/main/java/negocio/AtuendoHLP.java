@@ -9,6 +9,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 import dominio.Atuendo;
@@ -49,26 +50,41 @@ public class AtuendoHLP {
 	}
 	
 	private Set<Atuendo> obtenerAtuendosSegunCategoria(Map<Categoria, Set<Atuendo>> mapCategorias) {
-		Set<List<Atuendo>> posiblesAtuendos = Sets.cartesianProduct((List<Set<Atuendo>>) mapCategorias.values());
+		Set<List<Atuendo>> posiblesAtuendos = Sets.cartesianProduct(Lists.newArrayList(mapCategorias.values()));
+		Set<Atuendo> atuendos = Sets.newHashSet();
+		
+		for (List<Atuendo> posibleAtuendo : posiblesAtuendos) {
+			Atuendo nuevo = new Atuendo();
+			for (Atuendo atuendo : posibleAtuendo) {
+				nuevo.getPrendas().addAll(atuendo.getPrendas());
+			}
+			atuendos.add(nuevo);
+		}
+		
 		mapCategorias.forEach( (categoria, atuendosDeCategoria) -> {
-			Map<Categoria, Set<Atuendo>> copiaMapa = new HashMap<Categoria, Set<Atuendo>>(mapCategorias);
-			copiaMapa.remove(categoria);
-			Sets.union(posiblesAtuendos, this.obtenerAtuendosSegunCategoria(copiaMapa));
+			if (categoria.getEsOpcional()) {
+				Map<Categoria, Set<Atuendo>> copiaMapa = new HashMap<Categoria, Set<Atuendo>>(mapCategorias);
+				copiaMapa.remove(categoria);
+				Set<Atuendo> atuendosConMenosCategorias = this.obtenerAtuendosSegunCategoria(copiaMapa);
+				atuendos.addAll(atuendosConMenosCategorias);
+			}
 		});
-		Set<Atuendo> atuendos = posiblesAtuendos.stream().flatMap(x -> x.stream()).collect(Collectors.toSet());
+		
+		
 		return atuendos;
 	}
 
 	public Set<Atuendo> obtenerAtuendosSegunCapa(Map<Capa, Set<Prenda>> ropaMap){
-		Set<List<Prenda>> posiblesAtuendos= Sets.cartesianProduct((List<Set<Prenda>>) ropaMap.values());
+		Set<List<Prenda>> posiblesAtuendos= Sets.cartesianProduct(Lists.newArrayList(ropaMap.values()));
+		Set<Atuendo> atuendosDeCategoria = posiblesAtuendos.stream().map(set -> new Atuendo(set)).collect(Collectors.toSet());
 		ropaMap.forEach((capa, ropa) -> {
 			if (capa.getEsOpcional()) {
 				Map<Capa, Set<Prenda>> copiaMapa = new HashMap<Capa, Set<Prenda>>(ropaMap);
 				copiaMapa.remove(capa);
-				Sets.union(posiblesAtuendos, this.obtenerAtuendosSegunCapa(copiaMapa));
+				atuendosDeCategoria.addAll(this.obtenerAtuendosSegunCapa(copiaMapa));
 			}
 		});
-		Set<Atuendo> atuendosDeCategoria = posiblesAtuendos.stream().map(set -> new Atuendo(set)).collect(Collectors.toSet());
+		
 		return atuendosDeCategoria;
 	}
 	

@@ -2,14 +2,11 @@ package testDominio;
 
 import static org.junit.Assert.*;
 
-import java.util.HashSet;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import dominio.Guardarropa;
 import dominio.Usuario;
-import negocio.GuardarropaHLP;
 import negocio.UsuarioHLP;
 
 public class UsuarioTest {
