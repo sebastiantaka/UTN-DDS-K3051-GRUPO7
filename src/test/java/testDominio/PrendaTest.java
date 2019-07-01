@@ -47,11 +47,11 @@ public class PrendaTest {
 	private Color negro = new Color("negro");;
 	private Color blanco = new Color("blanco");;
 	private Color azul = new Color("azul");
-	private TipoDeTela vidrio = new TipoDeTela("vidrio");
-	private TipoDeTela gamuza = new TipoDeTela("gamuza");
-	private TipoDeTela cuero = new TipoDeTela("cuero");
-	private TipoDeTela jean = new TipoDeTela("jean");
-	private TipoDeTela algodon = new TipoDeTela("algodon");
+	private TipoDeTela vidrio = new TipoDeTela("vidrio", 0);
+	private TipoDeTela gamuza = new TipoDeTela("gamuza", 0);
+	private TipoDeTela cuero = new TipoDeTela("cuero", 0);
+	private TipoDeTela jean = new TipoDeTela("jean", 0);
+	private TipoDeTela algodon = new TipoDeTela("algodon", 0);
 	
 	@Before
 	public void init() {

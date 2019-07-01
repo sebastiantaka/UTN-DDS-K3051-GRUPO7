@@ -6,7 +6,7 @@ public class NivelDeCalorAbrigado implements NivelDeCalorStrategy {
 
 	@Override
 	public Integer nivelDeCalor(Prenda prenda) {
-		return prenda.getTipoDeTela().ordinal() * 5;
+		return prenda.getTipoDeTela().getNivelDeCalor() * 5;
 	}
 
 }
