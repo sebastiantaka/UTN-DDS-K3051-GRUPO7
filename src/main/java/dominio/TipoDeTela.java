@@ -1,6 +1,11 @@
 package dominio;
 
-public enum TipoDeTela {
+public class TipoDeTela {
 
-	ALGODON, JEAN, NYLON, CUERO, LANA, VIDRIO, GAMUZA
+	private String tela;
+	
+	public TipoDeTela(String tela){
+		this.tela= tela;
+	}
+	
 }

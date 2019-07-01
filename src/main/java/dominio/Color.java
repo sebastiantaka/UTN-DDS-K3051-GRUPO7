@@ -1,5 +1,11 @@
 package dominio;
 
-public enum Color {
-	ROJO, AZUL, AMARILLO, VERDE, VIOLETA, NARANJA, BLANCO, NEGRO, MARRON
+public class Color {
+
+	private String nombre;
+	
+	public Color(String nombre){
+		this.nombre= nombre;
+	}
+	
 }

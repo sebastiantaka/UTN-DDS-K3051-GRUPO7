@@ -1,6 +1,7 @@
 package testDominio;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ import negocio.TipoDePrendaHLP;
 
 public class PrendaTest {
 	
+	private Prenda prenda;
 	private Prenda prenda2;
 	private TipoDePrenda remera;
 	private TipoDePrenda pantalon;
@@ -41,6 +43,15 @@ public class PrendaTest {
 	private Categoria accesorio;
 	private List<Capa> capasPermitidas;
 	private NivelDeCalorNulo nivelDeCalorNulo;
+	private Color rojo = new Color("rojo");;
+	private Color negro = new Color("negro");;
+	private Color blanco = new Color("blanco");;
+	private Color azul = new Color("azul");
+	private TipoDeTela vidrio = new TipoDeTela("vidrio");
+	private TipoDeTela gamuza = new TipoDeTela("gamuza");
+	private TipoDeTela cuero = new TipoDeTela("cuero");
+	private TipoDeTela jean = new TipoDeTela("jean");
+	private TipoDeTela algodon = new TipoDeTela("algodon");
 	
 	@Before
 	public void init() {
@@ -60,11 +71,12 @@ public class PrendaTest {
 		tiposDeZapatilla = new HashSet<TipoDeTela>();
 		tiposDeAnteojos = new HashSet<TipoDeTela>();
 		
-		tiposDeAnteojos.add(TipoDeTela.VIDRIO);
-		tiposDeTelaRemera.add(TipoDeTela.ALGODON);
-		tiposDelPantalon.add(TipoDeTela.JEAN);
-		tiposDeZapatilla.add(TipoDeTela.CUERO);
-		tiposDeZapatilla.add(TipoDeTela.GAMUZA);
+		tiposDeAnteojos.add(vidrio);
+		tiposDeTelaRemera.add(algodon);
+		tiposDeTelaRemera.add(jean);
+		tiposDelPantalon.add(jean);
+		tiposDeZapatilla.add(cuero);
+		tiposDeZapatilla.add(gamuza);
 		
 		nivelDeCalorNulo = new NivelDeCalorNulo();
 		
@@ -72,10 +84,10 @@ public class PrendaTest {
 		zapatilla = tipoPrenda.crearTipoDePrenda("Zapatilla", calzado, tiposDeZapatilla, capaMedia, nivelDeCalorNulo);
 		anteojo = tipoPrenda.crearTipoDePrenda("Anteojos", accesorio, tiposDeAnteojos, capaMedia, nivelDeCalorNulo);
 		
-		tipoPrenda.agregarTelaPermitida(anteojo, TipoDeTela.VIDRIO);
-		tipoPrenda.agregarTelaPermitida(pantalon, TipoDeTela.JEAN);
-		tipoPrenda.agregarTelaPermitida(zapatilla, TipoDeTela.CUERO);
-		tipoPrenda.agregarTelaPermitida(zapatilla, TipoDeTela.GAMUZA);
+		tipoPrenda.agregarTelaPermitida(anteojo, vidrio);
+		tipoPrenda.agregarTelaPermitida(pantalon, jean);
+		tipoPrenda.agregarTelaPermitida(zapatilla, cuero);
+		tipoPrenda.agregarTelaPermitida(zapatilla, gamuza);
 		
 		
 	}
@@ -83,8 +95,8 @@ public class PrendaTest {
 	@Test
 	public void test_prendaDeUnColor() {
 		remera = tipoPrenda.crearTipoDePrenda("Remera", parteSuperior,  tiposDeTelaRemera, capaMedia, nivelDeCalorNulo);
-		tipoPrenda.agregarTelaPermitida(remera, TipoDeTela.ALGODON);
-		prenda2 = prendaH.crearPrendaDeUnColor("Remera de algodon roja", remera ,TipoDeTela.ALGODON, Color.ROJO);
+		tipoPrenda.agregarTelaPermitida(remera, algodon);
+		prenda2 = prendaH.crearPrendaDeUnColor("Remera de algodon roja", remera ,algodon, rojo);
 		assertEquals(Prenda.class , prenda2.getClass());
 		
 	}	
@@ -92,26 +104,35 @@ public class PrendaTest {
 	@Test
 	public void test_prenda() {
 		remera = tipoPrenda.crearTipoDePrenda("Remera", parteSuperior,  tiposDeTelaRemera, capaMedia, nivelDeCalorNulo);
-		tipoPrenda.agregarTelaPermitida(remera, TipoDeTela.ALGODON);
-		prenda2 = prendaH.crearPrenda("Remera de algodon Roja y azul Rayada", remera ,TipoDeTela.ALGODON, Color.ROJO, Color.AZUL);
+		tipoPrenda.agregarTelaPermitida(remera, algodon);
+		prenda2 = prendaH.crearPrenda("Remera de algodon Roja y azul Rayada", remera , algodon, rojo, azul);
 		assertEquals(Prenda.class , prenda2.getClass());
 		
 	}	
 	
 	@Test
 	public void test_agregarTelaAprenda() {
-		tipoPrenda.agregarTelaPermitida(pantalon, TipoDeTela.CUERO);
-		assertTrue(tipoPrenda.esTelaValida(pantalon, TipoDeTela.CUERO));
+		tipoPrenda.agregarTelaPermitida(pantalon, cuero);
+		assertTrue(tipoPrenda.esTelaValida(pantalon, cuero));
 		
 	}	
 	
 	@Test
 	public void test_telaNoValida() {
 		
-		assertEquals(false , tipoPrenda.esTelaValida(pantalon, TipoDeTela.GAMUZA));
+		assertEquals(false , tipoPrenda.esTelaValida(pantalon, gamuza));
 		
 	}	
 	
-	
+	@Test
+	public void test_prendasDistintaTelayDistintoColor() {
+		remera = tipoPrenda.crearTipoDePrenda("Remera", parteSuperior,  tiposDeTelaRemera, capaMedia, nivelDeCalorNulo);
+		tipoPrenda.agregarTelaPermitida(remera, algodon);
+		prenda = prendaH.crearPrendaDeUnColor("Remera de jean negra", remera ,jean, negro);
+		prenda2 = prendaH.crearPrendaDeUnColor("Remera de algodon roja", remera ,algodon, rojo);
+		assertEquals(prenda.getClass() , prenda2.getClass());
+		assertNotEquals(prenda.getTipoDeTela(), prenda2.getTipoDeTela());
+		assertNotEquals(prenda.getColorPrimario(), prenda2.getColorPrimario());
+	}	
 	
 }
