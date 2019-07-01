@@ -10,7 +10,7 @@ public class Atuendo {
 
 	public Atuendo() {}
 
-	public Atuendo(List<Prenda> unasPrendas) {
+	public Atuendo(Collection<Prenda> unasPrendas) {
 		prendas = unasPrendas;
 	}
 
@@ -21,7 +21,7 @@ public class Atuendo {
 	public void setPrendas(Collection<Prenda> prendas) {
 		this.prendas = prendas;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Atuendo [prendas=" + prendas + "]";

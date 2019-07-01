@@ -2,11 +2,11 @@ package dominio;
 
 public class Prenda {
 	
+	private String nombre;
 	private TipoDePrenda tipoDePrenda;
 	private TipoDeTela tipoDeTela;
 	private Color colorPrimario;
 	private Color colorSecundario;
-	private String nombre;
 	
 	public Prenda(String unNombre, TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color colorPrimario, Color colorSecundario) {
 		this.setTipoDePrenda(unTipoDePrenda);
@@ -64,13 +64,7 @@ public class Prenda {
 		this.tipoDeTela = tipoDeTela;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Prenda [tipoDePrenda=" + tipoDePrenda + ", tipoDeTela=" + tipoDeTela + ", colorPrimario="
-				+ colorPrimario + ", colorSecundario=" + colorSecundario + "]";
-	}
-
+	/*Nombre*/
 
 	public String getNombre() {
 		return nombre;
@@ -81,7 +75,13 @@ public class Prenda {
 		this.nombre = nombre;
 	}
 
-	
+
+	@Override
+	public String toString() {
+		return "Prenda [nombre=" + nombre /*+ ", tipoDePrenda=" + tipoDePrenda + ", tipoDeTela=" + tipoDeTela
+				+ ", colorPrimario=" + colorPrimario + ", colorSecundario=" + colorSecundario*/ + "]";
+	}
+
 }
 
 
