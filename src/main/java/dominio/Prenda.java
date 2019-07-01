@@ -75,6 +75,12 @@ public class Prenda {
 		this.nombre = nombre;
 	}
 
+	/* NivelDeCalor */
+	
+	public Integer getNivelDeCalor() {
+		return this.getTipoDePrenda().getCalculoDeCalor().nivelDeCalor(this);
+	}
+	
 
 	@Override
 	public String toString() {
