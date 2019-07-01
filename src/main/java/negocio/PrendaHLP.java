@@ -1,5 +1,6 @@
 package negocio;
 
+import java.awt.Image;
 import java.util.Objects;
 import dominio.Color;
 import dominio.Prenda;
@@ -12,7 +13,7 @@ public class PrendaHLP {
 	public PrendaHLP() { }
 	
 	public Prenda crearPrendaDeUnColor(String unNombre, TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color unColor) {
-		return new Prenda(unNombre, unTipoDePrenda, unTipoDeTela, unColor, null);//TODO actualizar 
+		return crearPrenda(unNombre, unTipoDePrenda, unTipoDeTela, unColor, null);
 	}
 	
 	public Prenda crearPrenda(String unNombre, TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color colorPrimario, Color colorSecundario) {
@@ -38,6 +39,10 @@ public class PrendaHLP {
 	
 	public boolean esTelaValida(TipoDePrenda tipoDePrenda, TipoDeTela tela) {
 		return tipoDePrenda.getTiposDeTelasPermitidas().contains(tela);
+	}
+	
+	public void cargarImagen(Prenda prenda, Image imagen) {
+		
 	}
 	
 }

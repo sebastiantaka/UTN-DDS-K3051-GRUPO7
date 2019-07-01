@@ -1,5 +1,7 @@
 package dominio;
 
+import java.awt.Image;
+
 public class Prenda {
 	
 	private String nombre;
@@ -7,6 +9,7 @@ public class Prenda {
 	private TipoDeTela tipoDeTela;
 	private Color colorPrimario;
 	private Color colorSecundario;
+	private Image imagen;
 	
 	public Prenda(String unNombre, TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color colorPrimario, Color colorSecundario) {
 		this.setTipoDePrenda(unTipoDePrenda);
@@ -80,8 +83,18 @@ public class Prenda {
 	public Integer getNivelDeCalor() {
 		return this.getTipoDePrenda().getCalculoDeCalor().nivelDeCalor(this);
 	}
-	
 
+	/* IMAGEN */
+	
+	public Image getImagen() {
+		return imagen;
+	}
+
+
+	public void setImagen(Image imagen) {
+		this.imagen = imagen;
+	}
+	
 	@Override
 	public String toString() {
 		return "Prenda [nombre=" + nombre /*+ ", tipoDePrenda=" + tipoDePrenda + ", tipoDeTela=" + tipoDeTela
