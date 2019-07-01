@@ -34,6 +34,14 @@ public class AtuendoHLP {
 		atuendo.getPrendas().add(prenda);
 	}
 	
+	public Set<Atuendo> obtenerSugerencias(Guardarropa guardarropa, String evento){
+		EventoHLP eventoH = new EventoHLP();
+		//abrigoMinimo += obtenerAbrigoMinimoPara(Evento)
+		Set<Atuendo> sugerencias = obtenerSugerencias(guardarropa).stream().filter(atuendo -> eventoH.esAtuendoApto(atuendo)).collect(Collectors.toSet());
+		sugerencias = eventoH.obtenerMejoresSugerencias(sugerencias);
+		return sugerencias;
+	}
+	
 	public Set<Atuendo> obtenerSugerencias(Guardarropa guardarropa){
 		Map<Categoria, Set<Atuendo>> atuendosDeUnaSolaCategoria = new HashMap<Categoria, Set<Atuendo>>();
 		Map<Categoria, Set<Prenda>> ropaSeparadaPorCategoria = this.separarRopaPorCategoria(guardarropa.getPrendas());

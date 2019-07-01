@@ -5,9 +5,7 @@ import java.util.Objects;
 
 import dominio.Capa;
 import dominio.Categoria;
-import dominio.NivelDeCalorNulo;
 import dominio.NivelDeCalorStrategy;
-import dominio.Prenda;
 import dominio.TipoDePrenda;
 import dominio.TipoDeTela;
 
@@ -21,6 +19,7 @@ public class TipoDePrendaHLP {
 		Objects.requireNonNull(categoria);
 		Objects.requireNonNull(tiposDeTelaPermitidos);
 		Objects.requireNonNull(capa);
+		Objects.requireNonNull(nivelDeCalor);
 		//FIN VALIDACIONES//
 		return new TipoDePrenda(nombre, categoria, tiposDeTelaPermitidos, capa, nivelDeCalor);
 	}

@@ -1,17 +1,5 @@
 package negocio;
 
-import java.util.Collection;
-
-import dominio.Atuendo;
-import dominio.Capa;
-import dominio.Categoria;
-import dominio.Color;
-import dominio.Guardarropa;
-import dominio.Prenda;
-import dominio.TipoDePrenda;
-import dominio.TipoDeTela;
-import dominio.Usuario;
-
 public class QueMePongo {
 
 	public QueMePongo() {}
