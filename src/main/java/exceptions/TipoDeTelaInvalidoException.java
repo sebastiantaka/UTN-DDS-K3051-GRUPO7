@@ -1,6 +1,6 @@
 package exceptions;
 
-public class TipoDeTelaInvalidoException extends RuntimeException {
+public class TipoDeTelaInvalidoException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
