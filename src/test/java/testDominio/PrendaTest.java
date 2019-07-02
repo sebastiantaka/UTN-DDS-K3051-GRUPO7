@@ -19,6 +19,7 @@ import dominio.NivelDeCalorNulo;
 import dominio.Prenda;
 import dominio.TipoDePrenda;
 import dominio.TipoDeTela;
+import exceptions.TipoDeTelaInvalidoException;
 import negocio.PrendaHLP;
 import negocio.TipoDePrendaHLP;
 
@@ -43,9 +44,8 @@ public class PrendaTest {
 	private Categoria accesorio;
 	private List<Capa> capasPermitidas;
 	private NivelDeCalorNulo nivelDeCalorNulo;
-	private Color rojo = new Color("rojo");;
-	private Color negro = new Color("negro");;
-	private Color blanco = new Color("blanco");;
+	private Color rojo = new Color("rojo");
+	private Color negro = new Color("negro");
 	private Color azul = new Color("azul");
 	private TipoDeTela vidrio = new TipoDeTela("vidrio", 0);
 	private TipoDeTela gamuza = new TipoDeTela("gamuza", 0);
@@ -93,7 +93,7 @@ public class PrendaTest {
 	}
 	
 	@Test
-	public void test_prendaDeUnColor() {
+	public void test_prendaDeUnColor() throws TipoDeTelaInvalidoException {
 		remera = tipoPrenda.crearTipoDePrenda("Remera", parteSuperior,  tiposDeTelaRemera, capaMedia, nivelDeCalorNulo);
 		tipoPrenda.agregarTelaPermitida(remera, algodon);
 		prenda2 = prendaH.crearPrendaDeUnColor("Remera de algodon roja", remera ,algodon, rojo);
@@ -102,7 +102,7 @@ public class PrendaTest {
 	}	
 	
 	@Test
-	public void test_prenda() {
+	public void test_prenda() throws TipoDeTelaInvalidoException {
 		remera = tipoPrenda.crearTipoDePrenda("Remera", parteSuperior,  tiposDeTelaRemera, capaMedia, nivelDeCalorNulo);
 		tipoPrenda.agregarTelaPermitida(remera, algodon);
 		prenda2 = prendaH.crearPrenda("Remera de algodon Roja y azul Rayada", remera , algodon, rojo, azul);
@@ -125,7 +125,7 @@ public class PrendaTest {
 	}	
 	
 	@Test
-	public void test_prendasDistintaTelayDistintoColor() {
+	public void test_prendasDistintaTelayDistintoColor() throws TipoDeTelaInvalidoException {
 		remera = tipoPrenda.crearTipoDePrenda("Remera", parteSuperior,  tiposDeTelaRemera, capaMedia, nivelDeCalorNulo);
 		tipoPrenda.agregarTelaPermitida(remera, algodon);
 		prenda = prendaH.crearPrendaDeUnColor("Remera de jean negra", remera ,jean, negro);

@@ -19,9 +19,6 @@ public class UsuarioHLP {
 	}
 	
 	public void adquirirGuardarropa(Usuario usuario, Guardarropa guardarropa) throws PrestacionesDePlanSuperadasException {
-		if (usuario.getGuardarropas().size() > usuario.getPlan().getMaximosGuardarropas()) {
-			throw new PrestacionesDePlanSuperadasException("Superaste la cantidad Maxima De guardarropas");
-		}
 		usuario.getGuardarropas().add(guardarropa);
 	}
 	

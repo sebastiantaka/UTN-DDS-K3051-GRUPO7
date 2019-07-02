@@ -18,9 +18,13 @@ import dominio.NivelDeCalorNulo;
 import dominio.Prenda;
 import dominio.TipoDePrenda;
 import dominio.TipoDeTela;
+import dominio.Usuario;
+import exceptions.PrestacionesDePlanSuperadasException;
+import exceptions.TipoDeTelaInvalidoException;
 import negocio.GuardarropaHLP;
 import negocio.PrendaHLP;
 import negocio.TipoDePrendaHLP;
+import negocio.UsuarioHLP;
 
 public class GuardaropaTest {
 	
@@ -40,9 +44,9 @@ public class GuardaropaTest {
 	private Prenda prenda5;
 	private Prenda prenda6;
 	private Prenda prenda7;
-	private Color rojo = new Color("rojo");;
-	private Color negro = new Color("negro");;
-	private Color blanco = new Color("blanco");;
+	private Color rojo = new Color("rojo");
+	private Color negro = new Color("negro");
+	private Color blanco = new Color("blanco");
 	private Color azul = new Color("azul");
 	private TipoDeTela vidrio = new TipoDeTela("vidrio", 0);
 	private TipoDeTela gamuza = new TipoDeTela("gamuza", 0);
@@ -58,9 +62,14 @@ public class GuardaropaTest {
 	private Categoria calzado;
 	private Categoria accesorio;
 	private List<Capa> capasPermitidas;
+	private UsuarioHLP usuarioH;
+	private Usuario usuario;
 	
 	@Before
 	public void init() {
+		
+		usuarioH = new UsuarioHLP();
+		usuario = usuarioH.crearUsuarioGratuito();
 		
 		capaMedia = new Capa("Capa Media", 1, false);
 		
@@ -95,21 +104,30 @@ public class GuardaropaTest {
 		tipoPrenda.agregarTelaPermitida(zapatilla, cuero);
 		tipoPrenda.agregarTelaPermitida(zapatilla, gamuza);
 		
-		prenda = prendaH.crearPrendaDeUnColor("Remera Blanca Lisa", remera, algodon,  blanco);
-		prenda2 = prendaH.crearPrendaDeUnColor("Remera Roja Lisa", remera ,algodon, rojo);
-		prenda3 = prendaH.crearPrendaDeUnColor("Pantalon Jean Azul", pantalon, jean, azul);
-		prenda4 = prendaH.crearPrendaDeUnColor("Zapatilla de Cuero Negro", zapatilla, cuero, negro);
-		prenda5 = prendaH.crearPrendaDeUnColor("Zapatilla de Cuero Rojo", zapatilla, cuero, rojo);
-		prenda6 = prendaH.crearPrendaDeUnColor("Anteojos de Sol", anteojo, vidrio, negro);
+		try {
+			
+			prenda = prendaH.crearPrendaDeUnColor("Remera Blanca Lisa", remera, algodon,  blanco);
+			prenda2 = prendaH.crearPrendaDeUnColor("Remera Roja Lisa", remera ,algodon, rojo);
+			prenda3 = prendaH.crearPrendaDeUnColor("Pantalon Jean Azul", pantalon, jean, azul);
+			prenda4 = prendaH.crearPrendaDeUnColor("Zapatilla de Cuero Negro", zapatilla, cuero, negro);
+			prenda5 = prendaH.crearPrendaDeUnColor("Zapatilla de Cuero Rojo", zapatilla, cuero, rojo);
+			prenda6 = prendaH.crearPrendaDeUnColor("Anteojos de Sol", anteojo, vidrio, negro);
+			
+			guardarropa = new Guardarropa();
 		
-		guardarropa = new Guardarropa();
+			guardarropaH.adquirirPrenda(guardarropa, prenda, usuario);
+			guardarropaH.adquirirPrenda(guardarropa, prenda2, usuario);
+			guardarropaH.adquirirPrenda(guardarropa, prenda3, usuario);
+			guardarropaH.adquirirPrenda(guardarropa, prenda4, usuario);
+			guardarropaH.adquirirPrenda(guardarropa, prenda5, usuario);
+			guardarropaH.adquirirPrenda(guardarropa, prenda6, usuario);
+			
+		} catch (PrestacionesDePlanSuperadasException e) {
+			e.printStackTrace();
+		} catch (TipoDeTelaInvalidoException e) {
+			e.printStackTrace();
+		}
 		
-		guardarropaH.adquirirPrenda(guardarropa, prenda);
-		guardarropaH.adquirirPrenda(guardarropa, prenda2);
-		guardarropaH.adquirirPrenda(guardarropa, prenda3);
-		guardarropaH.adquirirPrenda(guardarropa, prenda4);
-		guardarropaH.adquirirPrenda(guardarropa, prenda5);
-		guardarropaH.adquirirPrenda(guardarropa, prenda6);
 		
 	}
 	
@@ -120,10 +138,10 @@ public class GuardaropaTest {
 	}
 	
 	@Test
-	public void test_guardaropaAgregaPrendas() {
+	public void test_guardaropaAgregaPrendas() throws PrestacionesDePlanSuperadasException, TipoDeTelaInvalidoException {
 		
 		prenda7 = prendaH.crearPrendaDeUnColor("Zapatilla de Gamuza", zapatilla, gamuza, negro);
-		guardarropaH.adquirirPrenda(guardarropa, prenda7);
+		guardarropaH.adquirirPrenda(guardarropa, prenda7, usuario);
 		assertEquals(7, guardarropa.cantidadDePrendas());
 	}
 	
@@ -140,6 +158,5 @@ public class GuardaropaTest {
 	assertEquals(true, guardaropa.getPrendasDeseadas(Zapatillas.class).stream.findAny());
 	}
 	*/
-	
 	
 }

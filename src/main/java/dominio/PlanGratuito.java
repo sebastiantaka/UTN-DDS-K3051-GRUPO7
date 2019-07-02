@@ -8,4 +8,8 @@ public class PlanGratuito implements IPlan{
 		return 10;
 	}
 	
+	public Integer getMaximasPrendasPorGuardarropa() {
+		return 10;
+	}
+	
 }

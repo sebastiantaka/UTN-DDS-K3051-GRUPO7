@@ -20,10 +20,14 @@ import dominio.NivelDeCalorNulo;
 import dominio.Prenda;
 import dominio.TipoDePrenda;
 import dominio.TipoDeTela;
+import dominio.Usuario;
+import exceptions.PrestacionesDePlanSuperadasException;
+import exceptions.TipoDeTelaInvalidoException;
 import negocio.AtuendoHLP;
 import negocio.GuardarropaHLP;
 import negocio.PrendaHLP;
 import negocio.TipoDePrendaHLP;
+import negocio.UsuarioHLP;
 
 public class AtuendoTest {
 	
@@ -61,9 +65,14 @@ public class AtuendoTest {
 	private TipoDeTela cuero = new TipoDeTela("cuero", 0);
 	private TipoDeTela jean = new TipoDeTela("jean", 0);
 	private TipoDeTela algodon = new TipoDeTela("algodon", 0);
+	private Usuario usuario;
+	private UsuarioHLP usuarioH;
 	
 	@Before
 	public void init() {
+		
+		usuarioH = new UsuarioHLP();
+		usuario = usuarioH.crearUsuarioGratuito();
 		
 		capaMedia = new Capa("Capa Media", 1, false);
 		
@@ -98,21 +107,31 @@ public class AtuendoTest {
 		tipoPrenda.agregarTelaPermitida(zapatilla, cuero);
 		tipoPrenda.agregarTelaPermitida(zapatilla, gamuza);
 		
-		prenda = prendaH.crearPrendaDeUnColor("Remera Blanca Lisa", remera, algodon,  blanco);
-		prenda2 = prendaH.crearPrendaDeUnColor("Remera Roja Lisa", remera , algodon, rojo);
-		prenda3 = prendaH.crearPrendaDeUnColor("Pantalon Jean Azul", pantalon, jean, azul);
-		prenda4 = prendaH.crearPrendaDeUnColor("Zapatilla de Cuero Negro", zapatilla, cuero, negro);
-		prenda5 = prendaH.crearPrendaDeUnColor("Zapatilla de Cuero Rojo", zapatilla, cuero, rojo);
-		prenda6 = prendaH.crearPrendaDeUnColor("Anteojos de Sol", anteojo, vidrio, negro);
+
+		try {
+			prenda = prendaH.crearPrendaDeUnColor("Remera Blanca Lisa", remera, algodon,  blanco);
+			prenda2 = prendaH.crearPrendaDeUnColor("Remera Roja Lisa", remera , algodon, rojo);
+			prenda3 = prendaH.crearPrendaDeUnColor("Pantalon Jean Azul", pantalon, jean, azul);
+			prenda4 = prendaH.crearPrendaDeUnColor("Zapatilla de Cuero Negro", zapatilla, cuero, negro);
+			prenda5 = prendaH.crearPrendaDeUnColor("Zapatilla de Cuero Rojo", zapatilla, cuero, rojo);
+			prenda6 = prendaH.crearPrendaDeUnColor("Anteojos de Sol", anteojo, vidrio, negro);
+			
+			guardarropa = new Guardarropa();
+			
+			guardarropaH.adquirirPrenda(guardarropa, prenda, usuario);
+			guardarropaH.adquirirPrenda(guardarropa, prenda2, usuario);
+			guardarropaH.adquirirPrenda(guardarropa, prenda3, usuario);
+			guardarropaH.adquirirPrenda(guardarropa, prenda4, usuario);
+			guardarropaH.adquirirPrenda(guardarropa, prenda5, usuario);
+			guardarropaH.adquirirPrenda(guardarropa, prenda6, usuario);
+			
+		} catch (TipoDeTelaInvalidoException e) {
+			e.printStackTrace();
+		} catch (PrestacionesDePlanSuperadasException e) {
+			e.printStackTrace();
+		}
 		
-		guardarropa = new Guardarropa();
 		
-		guardarropaH.adquirirPrenda(guardarropa, prenda);
-		guardarropaH.adquirirPrenda(guardarropa, prenda2);
-		guardarropaH.adquirirPrenda(guardarropa, prenda3);
-		guardarropaH.adquirirPrenda(guardarropa, prenda4);
-		guardarropaH.adquirirPrenda(guardarropa, prenda5);
-		guardarropaH.adquirirPrenda(guardarropa, prenda6);
 		
 	}
 

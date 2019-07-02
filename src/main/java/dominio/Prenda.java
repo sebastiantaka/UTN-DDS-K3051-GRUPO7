@@ -2,7 +2,7 @@ package dominio;
 
 import java.awt.Image;
 
-public class Prenda {
+public class Prenda implements Cloneable {
 	
 	private String nombre;
 	private TipoDePrenda tipoDePrenda;
@@ -19,6 +19,10 @@ public class Prenda {
 		this.setNombre(unNombre);
 	}
 	
+	@Override
+	public Prenda clone() throws CloneNotSupportedException {
+		return new Prenda(this.getNombre(), this.getTipoDePrenda(), this.getTipoDeTela(), this.getColorPrimario(), this.getColorSecundario());
+	}	
 	
 	/*Categoria*/
 	

@@ -2,5 +2,5 @@ package dominio;
 
 public interface IPlan {
 	
-	public Integer getMaximosGuardarropas();
+	public Integer getMaximasPrendasPorGuardarropa();
 }

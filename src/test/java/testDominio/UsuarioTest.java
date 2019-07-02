@@ -6,10 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dominio.Guardarropa;
-import dominio.PlanGratuito;
-import dominio.PlanPremium;
 import dominio.Usuario;
 import exceptions.PrestacionesDePlanSuperadasException;
+import negocio.GuardarropaHLP;
 import negocio.UsuarioHLP;
 
 public class UsuarioTest {
@@ -18,14 +17,18 @@ public class UsuarioTest {
 	Usuario usuarioPremium;
 	Guardarropa guardarropa;
 	UsuarioHLP usuariohlp;
+	GuardarropaHLP guardarropaH;
 	
 	
 	@Before
 	public void setUp() throws Exception {
-		usuarioGratuito = new Usuario(new PlanGratuito());
-		usuarioPremium = new Usuario(new PlanPremium());
-		guardarropa = new Guardarropa();
 		usuariohlp = new UsuarioHLP();
+		usuarioGratuito = usuariohlp.crearUsuarioGratuito();
+		usuarioPremium = usuariohlp.crearUsuarioPremium();
+		
+		guardarropaH = new GuardarropaHLP();
+		guardarropa = guardarropaH.crearGuardarropa();
+		
 	}
 
 	@Test
@@ -34,13 +37,13 @@ public class UsuarioTest {
 	}
 	
 	@Test
-	public void UsuarioGratuitoSoloPuedeCargar10Guardarropas() {
-		assertEquals(new Integer(10), usuarioGratuito.getPlan().getMaximosGuardarropas());
+	public void UsuarioGratuitoSoloPuedeCargar10PrendasPorGuardarropa() {
+		assertEquals(new Integer(10), usuarioGratuito.getPlan().getMaximasPrendasPorGuardarropa());
 	}
 	
 	@Test
-	public void UsuarioPremiumCargaLosMaximosGuardarropas() {
-		assertEquals(Integer.MAX_VALUE, (int)Integer.valueOf(usuarioPremium.getPlan().getMaximosGuardarropas()));
+	public void UsuarioPremiumTienePrendasIlimitadasPorGuardarropa() {
+		assertEquals(Integer.MAX_VALUE, (int)Integer.valueOf(usuarioPremium.getPlan().getMaximasPrendasPorGuardarropa()));
 	}
 	
 	@Test
@@ -49,15 +52,6 @@ public class UsuarioTest {
 		usuariohlp.adquirirGuardarropa(usuarioGratuito, guardarropa);
 		assertEquals(1, usuarioGratuito.getGuardarropas().size());
 		assertTrue(usuarioGratuito.getGuardarropas().contains(guardarropa));
-	}
-	
-	@Test(expected = PrestacionesDePlanSuperadasException.class)
-	public void UsuarioGratuitoNoPuedeComprarMasDeLoQueSeLePermite() throws PrestacionesDePlanSuperadasException, CloneNotSupportedException {
-		usuariohlp.adquirirGuardarropa(usuarioGratuito, guardarropa);
-		for (int i = 0; i <= usuarioGratuito.getPlan().getMaximosGuardarropas(); i++) {
-			Guardarropa guardarropaExtra = guardarropa.clone();
-			usuariohlp.adquirirGuardarropa(usuarioGratuito, guardarropaExtra);
-		}
 	}
 
 }

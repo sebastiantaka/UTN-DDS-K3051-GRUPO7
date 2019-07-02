@@ -7,4 +7,8 @@ public class PlanPremium implements IPlan{
 	public Integer getMaximosGuardarropas() {
 		return Integer.MAX_VALUE;
 	}
+	
+	public Integer getMaximasPrendasPorGuardarropa() {
+		return Integer.MAX_VALUE;
+	}
 }

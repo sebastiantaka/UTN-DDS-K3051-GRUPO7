@@ -26,4 +26,8 @@ public class Guardarropa implements Cloneable{
 		this.prendas = prendas;
 	}
 	
+	public void agregarPrendas(Set<Prenda> prendas) {
+		this.prendas.addAll(prendas);
+	}
+	
 }

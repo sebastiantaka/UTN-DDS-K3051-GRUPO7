@@ -12,11 +12,11 @@ public class PrendaHLP {
 
 	public PrendaHLP() { }
 	
-	public Prenda crearPrendaDeUnColor(String unNombre, TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color unColor) {
+	public Prenda crearPrendaDeUnColor(String unNombre, TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color unColor) throws TipoDeTelaInvalidoException {
 		return crearPrenda(unNombre, unTipoDePrenda, unTipoDeTela, unColor, null);
 	}
 	
-	public Prenda crearPrenda(String unNombre, TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color colorPrimario, Color colorSecundario) {
+	public Prenda crearPrenda(String unNombre, TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela, Color colorPrimario, Color colorSecundario) throws TipoDeTelaInvalidoException {
 		//Validaciones//
 		Objects.requireNonNull(unTipoDePrenda);
 		this.verificarTelaValida(unTipoDePrenda, unTipoDeTela);
@@ -25,7 +25,7 @@ public class PrendaHLP {
 		return new Prenda(unNombre, unTipoDePrenda, unTipoDeTela, colorPrimario, colorSecundario);
 	}	
 	
-	private TipoDeTela verificarTelaValida(TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela) {
+	private TipoDeTela verificarTelaValida(TipoDePrenda unTipoDePrenda, TipoDeTela unTipoDeTela) throws TipoDeTelaInvalidoException {
 		TipoDePrendaHLP tipoDePrendaHLP = new TipoDePrendaHLP();
 		if (!tipoDePrendaHLP.esTelaValida(unTipoDePrenda, unTipoDeTela)) {
 			throw new TipoDeTelaInvalidoException();
