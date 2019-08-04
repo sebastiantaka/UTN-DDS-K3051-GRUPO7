@@ -13,7 +13,10 @@ public class MockClient implements IClimaClient {
 
     @Override
     public Double getTemperaturaEnC(Ciudad ciudad) throws APIClimaExeption {
-        return null;
+        if (ciudad == null){
+            throw new APIClimaExeption("Mock no funciona con null");
+        }
+        return this.respuesta;
     }
 
     public Double getRespuesta() {

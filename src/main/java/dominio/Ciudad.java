@@ -5,6 +5,12 @@ public class Ciudad {
 	private String nombre;
 	private Integer codigoDeCiudadOpenWeather;
 
+	public Ciudad(Provincia provincia, String nombre, Integer codigoOW) {
+		this.setProvincia(provincia);
+		this.setNombre(nombre);
+		this.setCodigoDeCiudadOpenWeather(codigoOW);
+	}
+
 	public Provincia getProvincia() {
 		return provincia;
 	}

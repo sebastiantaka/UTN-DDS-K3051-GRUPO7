@@ -3,7 +3,12 @@ package dominio;
 public class Provincia {
 	private Pais pais;
 	private String nombre;
-	
+
+	public Provincia(Pais pais, String nombre) {
+		this.setPais(pais);
+		this.setNombre(nombre);
+	}
+
 	public Pais getPais() {
 		return pais;
 	}
