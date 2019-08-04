@@ -3,6 +3,8 @@ package dominio;
 public class Ciudad {
 	private Provincia provincia;
 	private String nombre;
+	private Integer codigoDeCiudadOpenWeather;
+
 	public Provincia getProvincia() {
 		return provincia;
 	}
@@ -19,5 +21,14 @@ public class Ciudad {
 	@Override
 	public String toString() {
 		return this.getNombre() + ", " + this.provincia.toString();
+	}
+
+
+	public Integer getCodigoDeCiudadOpenWeather() {
+		return codigoDeCiudadOpenWeather;
+	}
+
+	public void setCodigoDeCiudadOpenWeather(Integer codigoDeCiudadOpenWeather) {
+		this.codigoDeCiudadOpenWeather = codigoDeCiudadOpenWeather;
 	}
 }

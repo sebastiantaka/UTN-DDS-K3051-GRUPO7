@@ -1,9 +1,10 @@
 package api.climaClient;
 
 import dominio.Ciudad;
+import exceptions.APIClimaExeption;
 
 public interface IClimaClient {
 	
-	public Integer getTemperaturaEnC(Ciudad ciudad);
+	public Double getTemperaturaEnC(Ciudad ciudad) throws APIClimaExeption;
 	
 }
