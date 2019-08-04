@@ -29,7 +29,7 @@ public class OpenWeatherClientTest {
 
     @Test
     public void test_cienteDirectoRespondeAlgo() throws IOException {
-        Double respuesta = clienteDirecto.getTemperaturaEnC(1);
+        Double respuesta = clienteDirecto.getTemperaturaEnC(ciudad.getCodigoDeCiudadOpenWeather());
         assertNotNull(respuesta);
     }
 
@@ -37,6 +37,11 @@ public class OpenWeatherClientTest {
     public void test_cienteAdapterRespondeAlgo() throws APIClimaExeption {
         Double respuesta = clienteAdapter.getTemperaturaEnC(ciudad);
         assertNotNull(respuesta);
+    }
+
+    @Test(expected = APIClimaExeption.class)
+    public void test_respuestaFallaConNull() throws APIClimaExeption {
+        clienteAdapter.getTemperaturaEnC(null);
     }
 
 }

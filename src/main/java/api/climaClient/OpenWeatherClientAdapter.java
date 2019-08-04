@@ -10,7 +10,7 @@ public class OpenWeatherClientAdapter implements IClimaClient {
         OpenWeatherClient cliente = new OpenWeatherClient();
         Double temperatura = null;
         try {
-            temperatura = cliente.getTemperaturaEnC(this.getCodigoDeCiudad(ciudad));
+            temperatura = cliente.getTemperaturaEnC(this.getCodigoDeCiudadOpenWeather(ciudad));
         }catch (Exception e){
             e.printStackTrace();
             throw new APIClimaExeption(e.getMessage());
