@@ -1,9 +1,13 @@
 package dominio;
 
+import java.time.ZoneId;
+import java.util.TimeZone;
+
 public class Ciudad {
 	private Provincia provincia;
 	private String nombre;
 	private Integer codigoDeCiudadOpenWeather;
+	private ZoneId zonaHoraria;
 
 	public Ciudad(Provincia provincia, String nombre, Integer codigoOW) {
 		this.setProvincia(provincia);
@@ -36,5 +40,14 @@ public class Ciudad {
 
 	public void setCodigoDeCiudadOpenWeather(Integer codigoDeCiudadOpenWeather) {
 		this.codigoDeCiudadOpenWeather = codigoDeCiudadOpenWeather;
+	}
+
+
+	public ZoneId getZonaHoraria() {
+		return zonaHoraria;
+	}
+
+	public void setZonaHoraria(ZoneId zonaHoraria) {
+		this.zonaHoraria = zonaHoraria;
 	}
 }

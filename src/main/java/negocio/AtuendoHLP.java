@@ -1,22 +1,13 @@
 package negocio;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
-import dominio.Atuendo;
-import dominio.Capa;
-import dominio.Categoria;
-import dominio.Guardarropa;
-import dominio.Prenda;
+import dominio.*;
+import exceptions.APIClimaExeption;
 
 public class AtuendoHLP {
 
@@ -33,11 +24,22 @@ public class AtuendoHLP {
 	public void agregarPrenda(Atuendo atuendo, Prenda prenda ) {
 		atuendo.getPrendas().add(prenda);
 	}
-	
-	public Set<Atuendo> obtenerSugerencias(Guardarropa guardarropa, String evento){
+
+	public Set<Atuendo> obtenerSugerenciasSegunFecha(Guardarropa guardarropa, Date fecha){
+		Set<Atuendo> sugerencias = new HashSet<Atuendo>();
+
+		return sugerencias;
+	}
+
+	public Set<Atuendo> obtenerSugerencias(Guardarropa guardarropa, Evento evento, Double temperaturaActual){
 		EventoHLP eventoH = new EventoHLP();
-		//abrigoMinimo += obtenerAbrigoMinimoPara(Evento)
-		Set<Atuendo> sugerencias = obtenerSugerencias(guardarropa).stream().filter(atuendo -> eventoH.esAtuendoApto(atuendo)).collect(Collectors.toSet());
+		Set<Atuendo> sugerencias = obtenerSugerencias(guardarropa).stream().filter(atuendo -> {
+			try {
+				return eventoH.esAtuendoApto(atuendo, evento, temperaturaActual);
+			} catch (APIClimaExeption apiClimaExeption) {
+				return false;
+			}
+		}).collect(Collectors.toSet());
 		sugerencias = eventoH.obtenerMejoresSugerencias(sugerencias);
 		return sugerencias;
 	}

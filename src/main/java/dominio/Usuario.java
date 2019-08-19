@@ -7,6 +7,7 @@ public class Usuario {
 	
 	private Set<Guardarropa> guardarropas = new HashSet<Guardarropa>();
 	private IPlan plan;
+	private Set<Evento> eventosRegistrados = new HashSet<Evento>();
 	
 	public Usuario(IPlan plan) {	
 		this.setPlan(plan);
@@ -28,4 +29,15 @@ public class Usuario {
 		this.plan = plan;
 	}
 
+	public Set<Evento> getEventosRegistrados() {
+		return eventosRegistrados;
+	}
+
+	public void setEventosRegistrados(Set<Evento> eventosRegistrados) {
+		this.eventosRegistrados = eventosRegistrados;
+	}
+
+	public void addEventosRegistrados(Evento evento){
+		this.eventosRegistrados.add(evento);
+	}
 }
