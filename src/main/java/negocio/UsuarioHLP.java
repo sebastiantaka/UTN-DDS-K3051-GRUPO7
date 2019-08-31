@@ -20,6 +20,7 @@ public class UsuarioHLP {
 	
 	public void adquirirGuardarropa(Usuario usuario, Guardarropa guardarropa) throws PrestacionesDePlanSuperadasException {
 		usuario.getGuardarropas().add(guardarropa);
+		guardarropa.agregarUsuario(usuario);
 	}
 	
 	

@@ -10,6 +10,11 @@ import exceptions.PrestacionesDePlanSuperadasException;
 public class GuardarropaHLP {
 
 	public GuardarropaHLP() { }
+
+	public void agregarUsuario(Guardarropa guardarropa, Usuario usuario) {
+		guardarropa.agregarUsuario(usuario);
+		usuario.addGuardarropa(guardarropa);
+	}
 	
 	public void adquirirPrenda(Guardarropa guardarropa, Prenda prenda, Usuario usuario) throws PrestacionesDePlanSuperadasException {
 		if (guardarropa.getPrendas().size() > usuario.getPlan().getMaximasPrendasPorGuardarropa()) {
