@@ -20,10 +20,6 @@ public class AtuendoHLP {
 	public Atuendo crearAtuendoSegunPrendas(Collection<Prenda> prendas) {
 		return new Atuendo(prendas);
 	}
-	
-	public void agregarPrenda(Atuendo atuendo, Prenda prenda ) {
-		atuendo.getPrendas().add(prenda);
-	}
 
 	public Set<Atuendo> obtenerSugerenciasSegunFecha(Guardarropa guardarropa, Date fecha){
 		Set<Atuendo> sugerencias = new HashSet<Atuendo>();
