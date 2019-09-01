@@ -122,3 +122,4 @@ public class AtuendoHLP {
 	    return (Atuendo) sugerencias.toArray()[rand.nextInt(sugerencias.size()+1)];	
 	}
 }
+

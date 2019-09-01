@@ -9,6 +9,8 @@ public class Provincia {
 		this.setNombre(nombre);
 	}
 
+	public Provincia() {	}
+
 	public Pais getPais() {
 		return pais;
 	}

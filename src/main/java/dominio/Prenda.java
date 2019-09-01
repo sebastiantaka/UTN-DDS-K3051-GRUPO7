@@ -10,7 +10,8 @@ public class Prenda implements Cloneable {
 	private Color colorPrimario;
 	private Color colorSecundario;
 	private Image imagen;
-	private Boolean estaOcupada;
+	private Boolean estaOcupada = false;
+	private Boolean esFormal;
 
 	public Prenda() {
 	};
@@ -117,6 +118,14 @@ public class Prenda implements Cloneable {
 
 	public void setEstaOcupada(Boolean estaOcupada) {
 		this.estaOcupada = estaOcupada;
+	}
+
+	public Boolean getEsFormal() {
+		return esFormal;
+	}
+
+	public void setEsFormal(Boolean esFormal) {
+		this.esFormal = esFormal;
 	}
 
 }

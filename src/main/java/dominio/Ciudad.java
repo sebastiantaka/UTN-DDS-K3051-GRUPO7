@@ -6,13 +6,15 @@ public class Ciudad {
 	private Provincia provincia;
 	private String nombre;
 	private Integer codigoDeCiudadOpenWeather;
-	private ZoneId zonaHoraria;
+	private String zonaHoraria;
 
 	public Ciudad(Provincia provincia, String nombre, Integer codigoOW) {
 		this.setProvincia(provincia);
 		this.setNombre(nombre);
 		this.setCodigoDeCiudadOpenWeather(codigoOW);
 	}
+
+	public Ciudad() {	}
 
 	public Provincia getProvincia() {
 		return provincia;
@@ -42,11 +44,11 @@ public class Ciudad {
 	}
 
 
-	public ZoneId getZonaHoraria() {
+	public String getZonaHoraria() {
 		return zonaHoraria;
 	}
 
-	public void setZonaHoraria(ZoneId zonaHoraria) {
-		this.zonaHoraria = zonaHoraria;
+	public void setZonaHoraria(String string) {
+		this.zonaHoraria = string;
 	}
 }

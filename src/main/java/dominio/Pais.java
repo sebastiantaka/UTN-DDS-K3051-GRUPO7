@@ -7,6 +7,8 @@ public class Pais {
 		this.setNombre(nombre);
 	}
 
+	public Pais() {	}
+
 	public String getNombre() {
 		return nombre;
 	}

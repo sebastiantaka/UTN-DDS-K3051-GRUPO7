@@ -5,10 +5,9 @@ import java.util.Date;
 import java.util.Set;
 import java.util.TimeZone;
 import java.util.stream.Collectors;
-
-import api.climaClient.IClimaClient;
 import dominio.Atuendo;
 import dominio.Evento;
+import dominio.Notificacion;
 import dominio.Usuario;
 import exceptions.APIClimaExeption;
 
@@ -16,9 +15,16 @@ public class EventoHLP {
 
 	public EventoHLP() {}
 
+	public void programarTareaEvento(Evento evento) {
+		evento.getOrganizador().configurarNotificacion(evento);
+	}
+	
+	
 	public Boolean esAtuendoApto(Atuendo atuendo, Evento evento, Double climaActual) throws APIClimaExeption {
+		Boolean respuesta = atuendo.getPrendas().stream().allMatch(prenda -> evento.getTipoDeEvento().esPrendaValida(prenda));
+		
 		ClimaHLP climaH = new ClimaHLP();
-		return atuendo.nivelDeCalor() > 100 - climaActual;
+		return respuesta && atuendo.nivelDeCalor() > 100 - climaActual;
 	}
 
 	public Set<Atuendo> obtenerMejoresSugerencias(Set<Atuendo> sugerencias) {
