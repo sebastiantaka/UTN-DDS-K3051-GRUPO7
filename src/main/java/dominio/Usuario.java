@@ -9,10 +9,11 @@ public class Usuario {
 	
 	private Set<Guardarropa> guardarropas = new HashSet<Guardarropa>();
 	private IPlan plan;
-	private Set<Evento> eventosRegistrados = new HashSet<Evento>();
+	private Set<Suscripcion> eventosRegistrados = new HashSet<Suscripcion>();
 	private String email;
 	private String contraseña;
 	private Collection<Notificacion> notificaciones = new ArrayList<Notificacion>();
+	private String numeroDeTelefono;
 	
 	
 	public Usuario(IPlan plan) {	
@@ -59,19 +60,23 @@ public class Usuario {
 		this.plan = plan;
 	}
 
-	public Set<Evento> getEventosRegistrados() {
+	public void addGuardarropa(Guardarropa guardarropa){
+		this.guardarropas.add(guardarropa);
+	}
+
+	public Set<Suscripcion> getEventosRegistrados() {
 		return eventosRegistrados;
 	}
 
-	public void setEventosRegistrados(Set<Evento> eventosRegistrados) {
+	public void setEventosRegistrados(Set<Suscripcion> eventosRegistrados) {
 		this.eventosRegistrados = eventosRegistrados;
 	}
 
-	public void addEventosRegistrados(Evento evento){
-		this.eventosRegistrados.add(evento);
+	public String getNumeroDeTelefono() {
+		return numeroDeTelefono;
 	}
-	
-	public void addGuardarropa(Guardarropa guardarropa){
-		this.guardarropas.add(guardarropa);
+
+	public void setNumeroDeTelefono(String numeroDeTelefono) {
+		this.numeroDeTelefono = numeroDeTelefono;
 	}
 }

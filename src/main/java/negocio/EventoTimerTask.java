@@ -14,13 +14,13 @@ public class EventoTimerTask extends TimerTask {
 	@Override
 	public void run() {
 		System.out.println("Evento Programado");
-		this.getEvento().getUsuarios().forEach(usuario ->{
+		this.getEvento().getSubscripcionUsuarios().forEach(suscripcion ->{
 			Notificacion notificacion = new Notificacion();
 			notificacion.setTitulo("¡Programá tu atuendo para este evento!");
 			notificacion.setDetalle("Deberias entrar a la aplicacion y elegir alguno de los atuendos recomendados para " + this.getEvento().getDescripcion());
 			notificacion.setFechaYHora(this.getEvento().getOrganizador().getFechaDeAviso());
 			NotificadorHLP notificadorHLP = new NotificadorHLP();
-			notificadorHLP.notificarPorEmail(usuario, notificacion);
+			notificadorHLP.notificarPorEmail(suscripcion.getUsuario(), notificacion);
 			
 		});
 	}

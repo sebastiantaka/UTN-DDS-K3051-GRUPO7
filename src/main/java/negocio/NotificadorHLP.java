@@ -11,6 +11,10 @@ public class NotificadorHLP {
 		if (usuario.getEmail() != null) {
 			clienteGmail.enviarConGMail(usuario.getEmail(), notificacion.getTitulo(), notificacion.getDetalle());
 		}
+		if (usuario.getNumeroDeTelefono() != null) {
+			
+		}
+		
 	}
 	
 }

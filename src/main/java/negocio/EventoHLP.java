@@ -1,13 +1,15 @@
 package negocio;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.TimeZone;
-import java.util.stream.Collectors;
 import dominio.Atuendo;
 import dominio.Evento;
-import dominio.Notificacion;
+import dominio.Guardarropa;
+import dominio.Suscripcion;
 import dominio.Usuario;
 import exceptions.APIClimaExeption;
 
@@ -17,6 +19,19 @@ public class EventoHLP {
 
 	public void programarTareaEvento(Evento evento) {
 		evento.getOrganizador().configurarNotificacion(evento);
+	}
+	
+	public Atuendo obtenerSugerenciasPara(Suscripcion suscripcion, Guardarropa guardarropa){
+		if (suscripcion.getAtuendos() != null) {
+			suscripcion.getAtuendos().get(suscripcion.getIndex());
+		} else {
+			AtuendoHLP atuendoHLP = new AtuendoHLP();
+			List<Atuendo> atuendos = new ArrayList(atuendoHLP.obtenerSugerencias(guardarropa));
+			suscripcion.setAtuendos(atuendos);
+			suscripcion.setIndex(0);
+		}
+		
+		return suscripcion.getAtuendos().get(suscripcion.getIndex());
 	}
 	
 	
@@ -32,7 +47,7 @@ public class EventoHLP {
 	}
 
 	public Set<Evento> obtenerEventosDeHoy(Usuario usuario){
-		return usuario.getEventosRegistrados().stream().filter(evento -> esHoy(evento)).collect(Collectors.toSet());
+		return null;//usuario.getEventosRegistrados().stream().filter(evento -> esHoy(evento)).collect(Collectors.toSet());
 	}
 
 	public Boolean esHoy(Evento evento){

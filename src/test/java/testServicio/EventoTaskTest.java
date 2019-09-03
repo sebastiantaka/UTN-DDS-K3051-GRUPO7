@@ -18,6 +18,7 @@ import dominio.Formal;
 import dominio.Pais;
 import dominio.PlanGratuito;
 import dominio.Provincia;
+import dominio.Suscripcion;
 import dominio.Usuario;
 import negocio.EventoHLP;
 
@@ -32,6 +33,8 @@ public class EventoTaskTest {
 	AvisoProgramado programador;
 	AvisoSimple programadorSimple;
 	Usuario walter;
+	Suscripcion subscripcionDeUsuario;
+	
 	
 	@Before
 	public void init() throws ParseException {
@@ -76,9 +79,13 @@ public class EventoTaskTest {
 		irAFiesta.setOrganizador(programadorSimple);
 		irAFiesta.setTipoDeEvento(new Formal());
 		
+		subscripcionDeUsuario = new Suscripcion();
+		subscripcionDeUsuario.setEvento(irAFiesta);
+		subscripcionDeUsuario.setUsuario(walter);
+		
 		walter = new Usuario(new PlanGratuito());
 		walter.setEmail("sebastian.taka@hotmail.com");
-		irAFiesta.getUsuarios().add(walter);
+		irAFiesta.getSubscripcionUsuarios().add(subscripcionDeUsuario);
 		
 		eventoHLP = new EventoHLP();
 	}
@@ -92,7 +99,6 @@ public class EventoTaskTest {
 	@Test
 	public void test_TareaSoloUnaVez() throws InterruptedException {
 		eventoHLP.programarTareaEvento(irAFiesta);
-		Thread.sleep(100000);
 		assert(true);
 	}
 
